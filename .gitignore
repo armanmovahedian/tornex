@@ -1,0 +1,22 @@
+# wp-env
+/.wp-env.override.json
+/wp-env-config/
+
+# WordPress core & third-party (not part of this repo's scope)
+/wordpress/
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/cache/
+
+# Node
+/node_modules/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Env/secrets
+.env
+.env.local

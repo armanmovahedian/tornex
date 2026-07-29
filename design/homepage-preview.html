@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تورنکس | پیش‌نمایش طراحی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#B5121B;
+    --red-dark:#8A0D15;
+    --ink:#1C1B1B;
+    --gray:#5B5B5B;
+    --bg-soft:#F7F6F5;
+    --white:#FFFFFF;
+    --border:#E7E4E2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Vazirmatn', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.8;
+  }
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .container{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  /* Header */
+  header{
+    background:var(--ink);
+    color:var(--white);
+    position:sticky; top:0; z-index:50;
+  }
+  .nav-wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{font-size:22px; font-weight:800; color:var(--white); letter-spacing:0.5px;}
+  .logo span{color:var(--red);}
+  nav ul{list-style:none; display:flex; gap:32px;}
+  nav a{font-size:15px; font-weight:500; color:#D8D6D5; transition:color .2s;}
+  nav a:hover{color:var(--white);}
+  .btn{
+    display:inline-block;
+    padding:12px 26px;
+    border-radius:6px;
+    font-size:14px;
+    font-weight:600;
+    transition:.2s;
+    border:1.5px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--red); color:var(--white);}
+  .btn-primary:hover{background:var(--red-dark);}
+  .btn-outline{border-color:#54514F; color:var(--white);}
+  .btn-outline:hover{border-color:var(--white);}
+  .btn-dark-outline{border-color:var(--ink); color:var(--ink);}
+  .btn-dark-outline:hover{background:var(--ink); color:var(--white);}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(180deg, var(--ink) 0%, #262424 100%);
+    color:var(--white);
+    padding:88px 0 96px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(90deg, rgba(181,18,27,0.08) 0px, rgba(181,18,27,0.08) 1px, transparent 1px, transparent 60px);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:13px; font-weight:600;
+    color:var(--red);
+    background:rgba(181,18,27,0.12);
+    border:1px solid rgba(181,18,27,0.4);
+    padding:6px 16px;
+    border-radius:30px;
+    margin-bottom:24px;
+    position:relative;
+  }
+  .hero h1{
+    font-size:44px; font-weight:800; line-height:1.5;
+    max-width:820px; margin:0 auto 20px;
+    position:relative;
+  }
+  .hero h1 em{color:var(--red); font-style:normal;}
+  .hero p{
+    font-size:17px; color:#C7C4C2; max-width:620px; margin:0 auto 36px;
+    position:relative;
+  }
+  .hero-ctas{display:flex; gap:14px; justify-content:center; position:relative;}
+  .hero-ctas .btn{padding:14px 30px; font-size:15px;}
+
+  /* Value props */
+  .values{
+    padding:64px 0;
+    background:var(--bg-soft);
+  }
+  .values-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  .value-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:28px 22px;
+    text-align:right;
+  }
+  .value-icon{
+    width:46px; height:46px;
+    background:rgba(181,18,27,0.1);
+    color:var(--red);
+    border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; font-weight:800;
+    margin-bottom:16px;
+  }
+  .value-card h3{font-size:16px; font-weight:700; margin-bottom:8px;}
+  .value-card p{font-size:13.5px; color:var(--gray); line-height:1.9;}
+
+  /* Categories */
+  .section{padding:72px 0;}
+  .section-head{text-align:center; margin-bottom:44px;}
+  .section-head .tag{color:var(--red); font-weight:700; font-size:13px; letter-spacing:.3px;}
+  .section-head h2{font-size:28px; font-weight:800; margin-top:10px;}
+
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  .cat-card{
+    position:relative;
+    border-radius:12px;
+    overflow:hidden;
+    height:180px;
+    background:var(--ink);
+    display:flex; align-items:flex-end;
+    padding:20px;
+    border:1px solid var(--border);
+  }
+  .cat-card::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(28,27,27,0.15), rgba(28,27,27,0.85));
+  }
+  .cat-card .swatch{
+    position:absolute; inset:0;
+    background:linear-gradient(135deg,#3a3838,#1c1b1b);
+  }
+  .cat-card span{
+    position:relative; color:var(--white); font-weight:700; font-size:16px;
+  }
+  .cat-card:nth-child(1) .swatch{background:linear-gradient(135deg,#4a1418,#1c1b1b);}
+  .cat-card:nth-child(2) .swatch{background:linear-gradient(135deg,#33373d,#1c1b1b);}
+  .cat-card:nth-child(3) .swatch{background:linear-gradient(135deg,#4a1418,#2a1010);}
+  .cat-card:nth-child(4) .swatch{background:linear-gradient(135deg,#333,#1c1b1b);}
+
+  /* Why us */
+  .why{
+    background:var(--ink);
+    color:var(--white);
+    padding:72px 0;
+  }
+  .why-inner{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+  }
+  .why h2{font-size:28px; font-weight:800; margin-bottom:18px;}
+  .why p{color:#C7C4C2; font-size:15.5px; line-height:2;}
+  .why-stats{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .stat-box{
+    border:1px solid #3A3838; border-radius:10px; padding:22px; text-align:center;
+  }
+  .stat-box .num{font-size:30px; font-weight:800; color:var(--red);}
+  .stat-box .label{font-size:13px; color:#B9B6B4; margin-top:6px;}
+
+  /* Testimonials */
+  .testi-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  .testi-card{
+    background:var(--bg-soft);
+    border-radius:12px;
+    padding:26px;
+    border:1px solid var(--border);
+  }
+  .testi-card p{font-size:14px; color:var(--gray); line-height:2; margin-bottom:18px;}
+  .testi-name{font-size:14px; font-weight:700;}
+  .testi-role{font-size:12.5px; color:var(--gray);}
+  .placeholder-tag{
+    display:inline-block; font-size:11px; background:#FDEAEA; color:var(--red-dark);
+    padding:3px 10px; border-radius:20px; margin-bottom:10px; font-weight:600;
+  }
+
+  /* CTA banner */
+  .cta-banner{
+    background:var(--red);
+    color:var(--white);
+    padding:52px 0;
+    text-align:center;
+  }
+  .cta-banner h2{font-size:24px; font-weight:800; margin-bottom:10px;}
+  .cta-banner p{font-size:14.5px; color:rgba(255,255,255,0.85); margin-bottom:26px;}
+  .cta-banner .btn{background:var(--white); color:var(--red); font-weight:700;}
+  .cta-banner .btn:hover{background:#F1E9E9;}
+
+  /* Footer */
+  footer{background:var(--ink); color:#B9B6B4; padding:56px 0 24px; font-size:13.5px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:40px;}
+  .footer-grid h4{color:var(--white); font-size:14px; font-weight:700; margin-bottom:16px;}
+  .footer-grid ul{list-style:none;}
+  .footer-grid li{margin-bottom:10px;}
+  .footer-grid a:hover{color:var(--white);}
+  .footer-bottom{
+    border-top:1px solid #34302F; padding-top:20px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12.5px; color:#8A8785;
+  }
+
+  @media(max-width:900px){
+    .values-grid, .cat-grid, .testi-grid{grid-template-columns:repeat(2,1fr);}
+    .why-inner{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:repeat(2,1fr);}
+    .hero h1{font-size:32px;}
+    nav ul{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav-wrap">
+    <div class="logo">تورن<span>کس</span></div>
+    <nav>
+      <ul>
+        <li><a href="#">صفحه اصلی</a></li>
+        <li><a href="#">محصولات</a></li>
+        <li><a href="#">درباره ما</a></li>
+        <li><a href="#">تماس با ما</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="btn btn-primary">استعلام قیمت</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">عمده‌فروش تخصصی فیبر نوری، شبکه و کابل</span>
+    <h1>تامین‌کننده تخصصی تجهیزات <em>فیبر نوری</em> و کابل شبکه</h1>
+    <p>عرضه عمده سیم و کابل با تمرکز ویژه بر خراسان افشارنژاد، تجهیزات شبکه و فیبر نوری — با فاکتور رسمی و تضمین بهترین قیمت بازار.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary">درخواست استعلام قیمت</a>
+      <a href="#" class="btn btn-outline">مشاهده محصولات</a>
+    </div>
+  </div>
+</section>
+
+<section class="values">
+  <div class="container">
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">✓</div>
+        <h3>فاکتور رسمی</h3>
+        <p>صدور فاکتور رسمی برای تمام خریدها، مناسب پروژه‌ها و مناقصات سازمانی</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">٪</div>
+        <h3>تضمین بهترین قیمت</h3>
+        <p>قیمت رقابتی و تضمین‌شده برای خرید عمده در بازار سیم و کابل</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">LC</div>
+        <h3>ال‌سی و اعتباری</h3>
+        <p>امکان خرید با گشایش اعتبار اسنادی و شرایط اعتباری برای مشتریان عمده</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">۞</div>
+        <h3>تخصص فیبر نوری</h3>
+        <p>تمرکز تخصصی روی تجهیزات فیبر نوری در کنار کابل و شبکه</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="tag">دسته‌بندی محصولات</div>
+      <h2>هرچی نیاز پروژه‌ات باشه، اینجاست</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card"><div class="swatch"></div><span>فیبر نوری</span></div>
+      <div class="cat-card"><div class="swatch"></div><span>تجهیزات شبکه</span></div>
+      <div class="cat-card"><div class="swatch"></div><span>سیم و کابل خراسان افشارنژاد</span></div>
+      <div class="cat-card"><div class="swatch"></div><span>سایر تجهیزات کابل</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container why-inner">
+    <div>
+      <h2>تو کارمون حرفه‌ای‌ترینیم</h2>
+      <p>تورنکس با شناخت دقیق بازار فیبر نوری و کابل، پاسخگویی سریع و مشاوره تخصصی رو برای مشتریان عمده، پیمانکاران و پروژه‌های سازمانی تضمین می‌کنه. از استعلام اولیه تا تحویل نهایی، همراه پروژه‌ی شما هستیم.</p>
+    </div>
+    <div class="why-stats">
+      <div class="stat-box"><div class="num">+۸</div><div class="label">سال تجربه</div></div>
+      <div class="stat-box"><div class="num">۱۰۰٪</div><div class="label">فاکتور رسمی</div></div>
+      <div class="stat-box"><div class="num">LC</div><div class="label">اعتبار اسنادی</div></div>
+      <div class="stat-box"><div class="num">۲۴/۷</div><div class="label">پاسخگویی فروش</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-soft);">
+  <div class="container">
+    <div class="section-head">
+      <div class="tag">اعتماد مشتریان</div>
+      <h2>نظر مشتریان عمده‌ی تورنکس</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <span class="placeholder-tag">نمونه — جایگزین با نظر واقعی</span>
+        <p>«همکاری با تورنکس همیشه با فاکتور رسمی و قیمت رقابتی همراه بوده. تحویل به‌موقع و پاسخگویی سریع تیم فروش نکته‌ی مثبت دیگه‌ست.»</p>
+        <div class="testi-name">مشتری نمونه</div>
+        <div class="testi-role">شرکت پیمانکاری نمونه</div>
+      </div>
+      <div class="testi-card">
+        <span class="placeholder-tag">نمونه — جایگزین با نظر واقعی</span>
+        <p>«برای پروژه‌های عمرانی به تامین‌کننده‌ای نیاز داشتیم که هم قیمت رقابتی بده هم قابل‌اعتماد باشه. تورنکس هردو رو داشت.»</p>
+        <div class="testi-name">مشتری نمونه</div>
+        <div class="testi-role">شرکت پروژه‌ای نمونه</div>
+      </div>
+      <div class="testi-card">
+        <span class="placeholder-tag">نمونه — جایگزین با نظر واقعی</span>
+        <p>«امکان خرید اعتباری و LC خیلی به گردش مالی ما کمک کرد. کیفیت محصولات هم همیشه در سطح استاندارد بوده.»</p>
+        <div class="testi-name">مشتری نمونه</div>
+        <div class="testi-role">فروشگاه زنجیره‌ای نمونه</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>نیاز به استعلام قیمت عمده دارید؟</h2>
+    <p>همین حالا با کارشناسان فروش تورنکس در تماس باشید.</p>
+    <a href="#" class="btn">تماس با ما</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:14px;">تورن<span>کس</span></div>
+        <p style="line-height:2;">عرضه عمده تجهیزات فیبر نوری، شبکه و کابل — با فاکتور رسمی و تضمین بهترین قیمت.</p>
+      </div>
+      <div>
+        <h4>دسترسی سریع</h4>
+        <ul>
+          <li><a href="#">صفحه اصلی</a></li>
+          <li><a href="#">محصولات</a></li>
+          <li><a href="#">درباره ما</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>خدمات مشتریان</h4>
+        <ul>
+          <li><a href="#">درخواست استعلام قیمت</a></li>
+          <li><a href="#">شرایط اعتباری و LC</a></li>
+          <li><a href="#">تماس با ما</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ارتباط با ما</h4>
+        <ul>
+          <li>تلفن: [جای‌گیر]</li>
+          <li>ایمیل: [جای‌گیر]</li>
+          <li>آدرس: [جای‌گیر]</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© ۱۴۰۴ تمامی حقوق برای تورنکس محفوظ است.</span>
+      <span>نسخه‌ی پیش‌نمایش طراحی — v1</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
