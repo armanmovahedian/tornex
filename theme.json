@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "780px",
+			"wideSize": "1180px"
+		},
+		"color": {
+			"palette": [
+				{ "slug": "brand-red", "color": "#B5121B", "name": "قرمز برند" },
+				{ "slug": "brand-red-dark", "color": "#8A0D15", "name": "قرمز تیره (هاور)" },
+				{ "slug": "ink", "color": "#1C1B1B", "name": "مشکی/ناوبری" },
+				{ "slug": "gray", "color": "#5B5B5B", "name": "خاکستری متن" },
+				{ "slug": "bg-soft", "color": "#F7F6F5", "name": "پس‌زمینه روشن" },
+				{ "slug": "white", "color": "#FFFFFF", "name": "سفید" }
+			],
+			"custom": false,
+			"customGradient": false
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"slug": "vazirmatn",
+					"fontFamily": "'Vazirmatn', sans-serif",
+					"name": "Vazirmatn"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small", "size": "13.5px", "name": "کوچک" },
+				{ "slug": "medium", "size": "16px", "name": "متوسط" },
+				{ "slug": "large", "size": "22px", "name": "بزرگ" },
+				{ "slug": "x-large", "size": "28px", "name": "خیلی بزرگ" },
+				{ "slug": "xx-large", "size": "44px", "name": "تیتر هیرو" }
+			]
+		},
+		"spacing": {
+			"units": ["px", "em", "rem", "%", "vh", "vw"]
+		}
+	},
+	"styles": {
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--vazirmatn)"
+		},
+		"color": {
+			"background": "#FFFFFF",
+			"text": "#1C1B1B"
+		}
+	}
+}
