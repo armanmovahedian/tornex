@@ -1,0 +1,15 @@
+{
+	"name": "tornex",
+	"version": "1.0.0",
+	"private": true,
+	"description": "تم اختصاصی سایت شرکتی تورنکس",
+	"scripts": {
+		"start": "wp-env start",
+		"stop": "wp-env stop",
+		"destroy": "wp-env destroy",
+		"cli": "wp-env run cli"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.0.0"
+	}
+}
