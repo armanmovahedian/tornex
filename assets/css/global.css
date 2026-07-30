@@ -12,12 +12,19 @@
 	box-sizing: border-box;
 }
 
+html {
+	overflow-x: hidden;
+	max-width: 100%;
+}
+
 body {
 	font-family: 'Vazirmatn', sans-serif;
 	color: var(--ink);
 	background: var(--white);
 	line-height: 1.8;
 	margin: 0;
+	overflow-x: hidden;
+	max-width: 100%;
 }
 
 a {
@@ -87,10 +94,12 @@ mark {
 
 .tornex-nav-wrap {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
-	gap: 24px;
+	gap: 12px 24px;
 	padding: 16px 24px;
+	max-width: 100%;
 }
 
 .tornex-nav-list {
@@ -115,9 +124,26 @@ mark {
 	flex-shrink: 0;
 }
 
+.site-logo img {
+	height: 32px;
+	width: auto;
+	flex-shrink: 0;
+}
+
 @media (max-width: 900px) {
 	.tornex-nav {
 		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	.site-logo img {
+		height: 24px;
+		max-width: 130px;
+	}
+	.tornex-nav-cta {
+		padding: 10px 16px;
+		font-size: 13px;
 	}
 }
 
@@ -268,6 +294,17 @@ mark {
 /* Hero */
 .tornex-hero {
 	background: linear-gradient(180deg, var(--ink) 0%, #262424 100%);
+}
+
+@media (max-width: 600px) {
+	.tornex-hero h1 {
+		font-size: 28px !important;
+	}
+}
+@media (min-width: 601px) and (max-width: 900px) {
+	.tornex-hero h1 {
+		font-size: 34px !important;
+	}
 }
 
 .tornex-eyebrow {
