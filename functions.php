@@ -37,14 +37,14 @@ function tornex_enqueue_assets() {
 		'tornex-global',
 		get_stylesheet_directory_uri() . '/assets/css/global.css',
 		array(),
-		wp_get_theme()->get( 'Version' )
+		filemtime( get_stylesheet_directory() . '/assets/css/global.css' )
 	);
 
 	wp_enqueue_style(
 		'tornex-style',
 		get_stylesheet_uri(),
 		array( 'tornex-global' ),
-		wp_get_theme()->get( 'Version' )
+		filemtime( get_stylesheet_directory() . '/style.css' )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'tornex_enqueue_assets' );

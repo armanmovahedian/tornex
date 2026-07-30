@@ -30,6 +30,11 @@ img {
 	display: block;
 }
 
+mark {
+	background: none;
+	color: inherit;
+}
+
 .tornex-container {
 	max-width: 1180px;
 	margin: 0 auto;
