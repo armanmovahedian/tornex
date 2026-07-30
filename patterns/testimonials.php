@@ -45,8 +45,8 @@ $tornex_testimonials = array(
 <!-- wp:group {"className":"tornex-testi-card","backgroundColor":"white","style":{"border":{"width":"1px","color":"#E7E4E2","radius":"12px"},"spacing":{"padding":{"top":"26px","right":"26px","bottom":"26px","left":"26px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group tornex-testi-card has-white-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:12px;padding-top:26px;padding-right:26px;padding-bottom:26px;padding-left:26px">
 
-<!-- wp:paragraph {"className":"tornex-placeholder-tag"} -->
-<p class="tornex-placeholder-tag">نمونه — جایگزین با نظر واقعی</p>
+<!-- wp:paragraph -->
+<p><span class="tornex-placeholder-tag">نمونه — جایگزین با نظر واقعی</span></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"gray","fontSize":"small"} -->
