@@ -25,6 +25,25 @@ function tornex_setup() {
 }
 add_action( 'after_setup_theme', 'tornex_setup' );
 
+/**
+ * Strip WordPress core's built-in default color/gradient palette so only
+ * the Tornex brand palette shows in the editor color picker.
+ * (theme.json's defaultPalette:false alone doesn't fully suppress it here.)
+ */
+function tornex_remove_core_default_palette( $theme_json ) {
+	return $theme_json->update_with( array(
+		'version'  => 3,
+		'settings' => array(
+			'color' => array(
+				'palette'   => array(),
+				'gradients' => array(),
+				'duotone'   => array(),
+			),
+		),
+	) );
+}
+add_filter( 'wp_theme_json_data_default', 'tornex_remove_core_default_palette' );
+
 function tornex_enqueue_assets() {
 	wp_enqueue_style(
 		'tornex-vazirmatn',
