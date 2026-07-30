@@ -374,6 +374,16 @@ mark {
 	background: linear-gradient(135deg, #333, #1c1b1b);
 }
 
+/* Team member chip (about page) */
+.tornex-team-chip {
+	background: var(--bg-soft);
+	border: 1px solid var(--border);
+	border-radius: 30px;
+	padding: 10px 22px;
+	font-weight: 600;
+	font-size: 14px;
+}
+
 /* Placeholder pill (testimonials, etc.) */
 .tornex-placeholder-tag {
 	display: inline-block;

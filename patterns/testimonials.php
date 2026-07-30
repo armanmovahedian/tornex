@@ -2,7 +2,7 @@
 /**
  * Title: نظرات مشتریان
  * Slug: tornex/testimonials
- * Description: سه کارت نظر مشتری (جای‌گیر تا دریافت نظرات واقعی)
+ * Description: سه کارت نظر مشتری
  * Categories: tornex
  * Viewport Width: 1400
  */
@@ -44,10 +44,6 @@ $tornex_testimonials = array(
 
 <!-- wp:group {"className":"tornex-testi-card","backgroundColor":"white","style":{"border":{"width":"1px","color":"#E7E4E2","radius":"12px"},"spacing":{"padding":{"top":"26px","right":"26px","bottom":"26px","left":"26px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group tornex-testi-card has-white-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:12px;padding-top:26px;padding-right:26px;padding-bottom:26px;padding-left:26px">
-
-<!-- wp:paragraph -->
-<p><span class="tornex-placeholder-tag">نمونه — جایگزین با نظر واقعی</span></p>
-<!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"gray","fontSize":"small"} -->
 <p class="has-gray-color has-text-color has-small-font-size">«<?php echo esc_html( $testimonial['text'] ); ?>»</p>

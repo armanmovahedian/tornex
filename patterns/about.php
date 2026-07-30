@@ -41,6 +41,35 @@
 
 <!-- wp:pattern {"slug":"tornex/value-props"} /-->
 
+<?php
+$tornex_team = array(
+	'آقای قربانی',
+	'آقای موحدیان',
+	'خانم درویش',
+	'آقای علیمردانی',
+	'آقای وندائی',
+);
+?>
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"56px","right":"24px","bottom":"64px","left":"24px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-top:56px;padding-right:24px;padding-bottom:64px;padding-left:24px">
+
+<!-- wp:heading {"textAlign":"center","level":2,"fontSize":"x-large"} -->
+<h2 class="wp-block-heading has-text-align-center has-x-large-font-size">تیم تورنکس</h2>
+<!-- /wp:heading -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"top":"32px"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
+<div class="wp-block-group" style="margin-top:32px">
+<?php foreach ( $tornex_team as $member ) : ?>
+<!-- wp:paragraph {"className":"tornex-team-chip"} -->
+<p class="tornex-team-chip"><?php echo esc_html( $member ); ?></p>
+<!-- /wp:paragraph -->
+<?php endforeach; ?>
+</div>
+<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"64px","right":"24px","bottom":"64px","left":"24px"}}},"backgroundColor":"bg-soft","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-bg-soft-background-color has-background" style="padding-top:64px;padding-right:24px;padding-bottom:64px;padding-left:24px">
 
