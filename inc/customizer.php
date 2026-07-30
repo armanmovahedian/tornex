@@ -35,5 +35,24 @@ function tornex_customize_register( $wp_customize ) {
 			'type'    => $args['type'],
 		) );
 	}
+
+	$page_settings = array(
+		'tornex_contact_page' => __( 'صفحه تماس با ما', 'tornex' ),
+		'tornex_about_page'   => __( 'صفحه درباره ما', 'tornex' ),
+	);
+
+	foreach ( $page_settings as $setting => $label ) {
+		$wp_customize->add_setting( $setting, array(
+			'type'              => 'theme_mod',
+			'sanitize_callback' => 'absint',
+			'default'           => 0,
+		) );
+
+		$wp_customize->add_control( $setting, array(
+			'section' => 'tornex_contact',
+			'label'   => $label,
+			'type'    => 'dropdown-pages',
+		) );
+	}
 }
 add_action( 'customize_register', 'tornex_customize_register' );
