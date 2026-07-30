@@ -17,7 +17,10 @@
 				{ "slug": "white", "color": "#FFFFFF", "name": "سفید" }
 			],
 			"custom": false,
-			"customGradient": false
+			"customGradient": false,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"defaultDuotone": false
 		},
 		"typography": {
 			"fontFamilies": [
@@ -33,7 +36,8 @@
 				{ "slug": "large", "size": "22px", "name": "بزرگ" },
 				{ "slug": "x-large", "size": "28px", "name": "خیلی بزرگ" },
 				{ "slug": "xx-large", "size": "44px", "name": "تیتر هیرو" }
-			]
+			],
+			"defaultFontSizes": false
 		},
 		"spacing": {
 			"units": ["px", "em", "rem", "%", "vh", "vw"]
