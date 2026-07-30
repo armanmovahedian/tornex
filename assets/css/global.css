@@ -54,9 +54,12 @@ mark {
 	border-radius: 6px;
 	font-size: 14px;
 	font-weight: 600;
-	transition: 0.2s;
+	transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 	border: 1.5px solid transparent;
 	cursor: pointer;
+}
+.tornex-btn:hover {
+	transform: translateY(-2px);
 }
 
 .tornex-btn-primary {
@@ -65,6 +68,7 @@ mark {
 }
 .tornex-btn-primary:hover {
 	background: var(--red-dark);
+	box-shadow: 0 8px 20px rgba(181, 18, 27, 0.3);
 }
 
 .tornex-btn-outline {
@@ -73,6 +77,7 @@ mark {
 }
 .tornex-btn-outline:hover {
 	border-color: var(--white);
+	box-shadow: 0 8px 20px rgba(255, 255, 255, 0.12);
 }
 
 .tornex-btn-dark-outline {
@@ -333,22 +338,24 @@ mark {
 /* Card hover lift */
 .tornex-value-card,
 .tornex-testi-card {
-	transition: box-shadow 0.2s ease, transform 0.2s ease;
+	transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 .tornex-value-card:hover,
 .tornex-testi-card:hover {
-	box-shadow: 0 8px 24px rgba(28, 27, 27, 0.08);
-	transform: translateY(-2px);
+	box-shadow: 0 14px 34px rgba(28, 27, 27, 0.12);
+	transform: translateY(-5px);
+	border-color: var(--red);
 }
 
 /* Category cards */
 .tornex-cat-card {
 	position: relative;
 	overflow: hidden;
-	transition: transform 0.2s ease;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .tornex-cat-card:hover {
-	transform: translateY(-2px);
+	transform: translateY(-5px);
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
 }
 .tornex-cat-card::before {
 	content: "";
@@ -473,13 +480,62 @@ mark {
 	}
 }
 
+/* Scroll-reveal animation (see assets/js/animations.js) */
+.tornex-animate {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.tornex-animate.is-visible {
+	opacity: 1;
+	transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+	.tornex-animate {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
+/* Subtle brand-colored grid texture (hero + select dark sections) */
+.tornex-texture-grid {
+	position: relative;
+	overflow: hidden;
+}
+.tornex-texture-grid::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: repeating-linear-gradient(
+		90deg,
+		rgba(181, 18, 27, 0.07) 0px,
+		rgba(181, 18, 27, 0.07) 1px,
+		transparent 1px,
+		transparent 60px
+	);
+	pointer-events: none;
+}
+.tornex-texture-grid > * {
+	position: relative;
+	z-index: 1;
+}
+
 /* Button hover states (block color settings have no native hover) */
+.wp-block-button__link {
+	transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wp-block-button__link:hover {
+	transform: translateY(-2px);
+}
 .wp-block-button__link.has-brand-red-background-color:hover {
 	background-color: var(--red-dark) !important;
+	box-shadow: 0 8px 20px rgba(181, 18, 27, 0.3);
 }
 .wp-block-button.is-style-outline .wp-block-button__link:hover {
 	background-color: rgba(255, 255, 255, 0.1) !important;
 }
 .wp-block-button__link.has-white-background-color:hover {
 	background-color: #f1e9e9 !important;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }

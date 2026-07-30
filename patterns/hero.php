@@ -7,8 +7,8 @@
  * Viewport Width: 1400
  */
 ?>
-<!-- wp:group {"align":"full","className":"tornex-hero","style":{"spacing":{"padding":{"top":"88px","right":"24px","bottom":"96px","left":"24px"}}},"textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull tornex-hero has-white-color has-text-color" style="padding-top:88px;padding-right:24px;padding-bottom:96px;padding-left:24px">
+<!-- wp:group {"align":"full","className":"tornex-hero tornex-texture-grid","style":{"spacing":{"padding":{"top":"88px","right":"24px","bottom":"96px","left":"24px"}}},"textColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull tornex-hero tornex-texture-grid has-white-color has-text-color" style="padding-top:88px;padding-right:24px;padding-bottom:96px;padding-left:24px">
 
 <!-- wp:paragraph {"align":"center","fontSize":"small","textColor":"brand-red"} -->
 <p class="has-text-align-center has-brand-red-color has-text-color has-small-font-size"><span class="tornex-eyebrow">عمده‌فروش تخصصی فیبر نوری، شبکه و کابل</span></p>
