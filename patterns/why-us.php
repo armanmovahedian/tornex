@@ -52,8 +52,8 @@ $tornex_why_stats = array(
 <!-- wp:column -->
 <div class="wp-block-column">
 
-<!-- wp:group {"className":"tornex-animate","style":{"border":{"width":"1px","color":"#3A3838","radius":"10px"},"spacing":{"padding":{"top":"22px","right":"18px","bottom":"22px","left":"18px"}}},"layout":{"type":"constrained","contentSize":"100%"}} -->
-<div class="wp-block-group tornex-animate" style="border-color:#3A3838;border-width:1px;border-radius:10px;padding-top:22px;padding-right:18px;padding-bottom:22px;padding-left:18px;transition-delay:<?php echo (int) $tornex_stat_delay; ?>ms">
+<!-- wp:group {"className":"tornex-animate tornex-stat-box","style":{"border":{"width":"1px","color":"#3A3838","radius":"14px"},"spacing":{"padding":{"top":"22px","right":"18px","bottom":"22px","left":"18px"}}},"layout":{"type":"constrained","contentSize":"100%"}} -->
+<div class="wp-block-group tornex-animate tornex-stat-box" style="border-color:#3A3838;border-width:1px;border-radius:14px;padding-top:22px;padding-right:18px;padding-bottom:22px;padding-left:18px;transition-delay:<?php echo (int) $tornex_stat_delay; ?>ms">
 
 <!-- wp:paragraph {"align":"center","textColor":"brand-red","fontSize":"x-large","style":{"typography":{"fontWeight":"800"}}} -->
 <p class="has-text-align-center has-brand-red-color has-text-color has-x-large-font-size" style="font-weight:800">

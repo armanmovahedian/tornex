@@ -34,8 +34,8 @@ $tornex_address = get_theme_mod( 'tornex_address' );
 <!-- wp:column -->
 <div class="wp-block-column">
 
-<!-- wp:group {"backgroundColor":"bg-soft","style":{"border":{"radius":"12px"},"spacing":{"padding":{"top":"28px","right":"26px","bottom":"28px","left":"26px"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-bg-soft-background-color has-background" style="border-radius:12px;padding-top:28px;padding-right:26px;padding-bottom:28px;padding-left:26px">
+<!-- wp:group {"backgroundColor":"bg-soft","style":{"border":{"radius":"14px"},"spacing":{"padding":{"top":"28px","right":"26px","bottom":"28px","left":"26px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-bg-soft-background-color has-background" style="border-radius:14px;padding-top:28px;padding-right:26px;padding-bottom:28px;padding-left:26px">
 
 <!-- wp:heading {"level":3,"fontSize":"medium"} -->
 <h3 class="wp-block-heading has-medium-font-size">اطلاعات تماس</h3>
@@ -56,8 +56,8 @@ $tornex_address = get_theme_mod( 'tornex_address' );
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"border":{"width":"1px","color":"#E7E4E2","radius":"12px"},"spacing":{"padding":{"top":"0px","right":"0px","bottom":"0px","left":"0px"},"margin":{"top":"20px"},"minHeight":"220px"}},"backgroundColor":"bg-soft","layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
-<div class="wp-block-group has-bg-soft-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:12px;min-height:220px;margin-top:20px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+<!-- wp:group {"style":{"border":{"width":"1px","color":"#E7E4E2","radius":"14px"},"spacing":{"padding":{"top":"0px","right":"0px","bottom":"0px","left":"0px"},"margin":{"top":"20px"},"minHeight":"220px"}},"backgroundColor":"bg-soft","layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
+<div class="wp-block-group has-bg-soft-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:14px;min-height:220px;margin-top:20px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
 
 <!-- wp:paragraph {"textColor":"gray","fontSize":"small"} -->
 <p class="has-gray-color has-text-color has-small-font-size">[جای‌گیر نقشه — بعد از دریافت آدرس دقیق]</p>

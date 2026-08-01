@@ -6,6 +6,9 @@
 	--bg-soft: #F7F6F5;
 	--white: #FFFFFF;
 	--border: #E7E4E2;
+	--shadow-sm: 0 1px 2px rgba(28, 27, 27, 0.04), 0 2px 8px rgba(28, 27, 27, 0.05);
+	--shadow-md: 0 6px 20px rgba(28, 27, 27, 0.08), 0 2px 6px rgba(28, 27, 27, 0.05);
+	--shadow-lg: 0 16px 40px rgba(28, 27, 27, 0.14);
 }
 
 * {
@@ -95,6 +98,7 @@ mark {
 	position: sticky;
 	top: 0;
 	z-index: 50;
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
 }
 
 .tornex-nav-wrap {
@@ -227,8 +231,9 @@ mark {
 
 .tornex-product-gallery {
 	margin: 24px 0;
-	border-radius: 10px;
+	border-radius: 14px;
 	overflow: hidden;
+	box-shadow: var(--shadow-md);
 }
 .tornex-product-gallery--stock {
 	position: relative;
@@ -238,6 +243,7 @@ mark {
 	height: 320px;
 	object-fit: cover;
 	display: block;
+	filter: saturate(1.08) contrast(1.03);
 }
 .tornex-stock-badge {
 	position: absolute;
@@ -284,9 +290,16 @@ mark {
 }
 .tornex-related-card {
 	border: 1px solid var(--border);
-	border-radius: 10px;
+	border-radius: 14px;
 	overflow: hidden;
 	display: block;
+	box-shadow: var(--shadow-sm);
+	transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.tornex-related-card:hover {
+	transform: translateY(-5px);
+	box-shadow: var(--shadow-lg);
+	border-color: var(--red);
 }
 .tornex-related-card img {
 	width: 100%;
@@ -401,11 +414,12 @@ mark {
 /* Card hover lift */
 .tornex-value-card,
 .tornex-testi-card {
+	box-shadow: var(--shadow-sm);
 	transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 .tornex-value-card:hover,
 .tornex-testi-card:hover {
-	box-shadow: 0 14px 34px rgba(28, 27, 27, 0.12);
+	box-shadow: var(--shadow-lg);
 	transform: translateY(-5px);
 	border-color: var(--red);
 }
@@ -414,11 +428,16 @@ mark {
 .tornex-cat-card {
 	position: relative;
 	overflow: hidden;
+	box-shadow: var(--shadow-sm);
 	transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .tornex-cat-card:hover {
 	transform: translateY(-5px);
-	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+	box-shadow: 0 16px 34px rgba(0, 0, 0, 0.3);
+}
+.tornex-popular-photo img,
+.tornex-related-card img {
+	filter: saturate(1.08) contrast(1.03);
 }
 .tornex-cat-card::before {
 	content: "";
@@ -444,14 +463,26 @@ mark {
 	background: linear-gradient(135deg, #333, #1c1b1b);
 }
 
+/* Why-us stat boxes (dark background — subtle fill + border glow instead of shadow) */
+.tornex-stat-box {
+	background: rgba(255, 255, 255, 0.03);
+	transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.tornex-stat-box:hover {
+	background: rgba(255, 255, 255, 0.06);
+	border-color: rgba(181, 18, 27, 0.5) !important;
+	transform: translateY(-3px);
+}
+
 /* About page photo banner */
 .tornex-about-photo {
 	position: relative;
 	overflow: hidden;
-	border-radius: 12px;
+	border-radius: 14px;
 	min-height: 280px;
 	background-size: cover;
 	background-position: center;
+	box-shadow: var(--shadow-md);
 }
 .tornex-about-photo::before {
 	content: "";
@@ -485,8 +516,9 @@ mark {
 .tornex-contact-form {
 	background: var(--bg-soft);
 	border: 1px solid var(--border);
-	border-radius: 12px;
-	padding: 28px 26px;
+	border-radius: 14px;
+	padding: 30px 28px;
+	box-shadow: var(--shadow-sm);
 }
 
 .tornex-form-hp {
@@ -630,13 +662,14 @@ mark {
 	display: block;
 	background: var(--white);
 	border: 1px solid var(--border);
-	border-radius: 12px;
+	border-radius: 14px;
 	overflow: hidden;
+	box-shadow: var(--shadow-sm);
 	transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 .tornex-popular-card:hover {
 	transform: translateY(-5px);
-	box-shadow: 0 14px 34px rgba(28, 27, 27, 0.12);
+	box-shadow: var(--shadow-lg);
 	border-color: var(--red);
 }
 .tornex-popular-photo {
@@ -724,6 +757,7 @@ mark {
 	background: var(--red);
 	border-color: var(--red);
 	color: var(--white);
+	box-shadow: 0 6px 16px rgba(181, 18, 27, 0.3);
 }
 .tornex-finder-item.is-hidden {
 	display: none;
@@ -735,6 +769,7 @@ mark {
 }
 .tornex-finder-cta {
 	align-items: center;
+	box-shadow: var(--shadow-sm);
 }
 .tornex-finder-cta p {
 	margin: 0;

@@ -40,8 +40,8 @@ $tornex_value_props = array(
 <!-- wp:column -->
 <div class="wp-block-column">
 
-<!-- wp:group {"className":"tornex-value-card tornex-animate","style":{"border":{"width":"1px","color":"#E7E4E2","radius":"10px"},"spacing":{"padding":{"top":"28px","right":"22px","bottom":"28px","left":"22px"}}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group tornex-value-card tornex-animate has-white-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:10px;padding-top:28px;padding-right:22px;padding-bottom:28px;padding-left:22px;transition-delay:<?php echo (int) $tornex_vp_delay; ?>ms">
+<!-- wp:group {"className":"tornex-value-card tornex-animate","style":{"border":{"width":"1px","color":"#E7E4E2","radius":"14px"},"spacing":{"padding":{"top":"28px","right":"22px","bottom":"28px","left":"22px"}}},"backgroundColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group tornex-value-card tornex-animate has-white-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:14px;padding-top:28px;padding-right:22px;padding-bottom:28px;padding-left:22px;transition-delay:<?php echo (int) $tornex_vp_delay; ?>ms">
 
 <!-- wp:paragraph {"className":"tornex-icon-box"} -->
 <p class="tornex-icon-box"><?php echo esc_html( $card['icon'] ); ?></p>

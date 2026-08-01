@@ -84,8 +84,8 @@ endif;
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","className":"tornex-finder-cta","style":{"spacing":{"padding":{"top":"28px","right":"28px","bottom":"28px","left":"28px"},"margin":{"top":"40px"}},"border":{"radius":"12px"}},"backgroundColor":"bg-soft","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
-<div class="wp-block-group alignwide tornex-finder-cta has-bg-soft-background-color has-background" style="border-radius:12px;margin-top:40px;padding-top:28px;padding-right:28px;padding-bottom:28px;padding-left:28px">
+<!-- wp:group {"align":"wide","className":"tornex-finder-cta","style":{"spacing":{"padding":{"top":"28px","right":"28px","bottom":"28px","left":"28px"},"margin":{"top":"40px"}},"border":{"radius":"14px"}},"backgroundColor":"bg-soft","layout":{"type":"flex","justifyContent":"space-between","flexWrap":"wrap"}} -->
+<div class="wp-block-group alignwide tornex-finder-cta has-bg-soft-background-color has-background" style="border-radius:14px;margin-top:40px;padding-top:28px;padding-right:28px;padding-bottom:28px;padding-left:28px">
 
 <!-- wp:paragraph {"style":{"typography":{"fontWeight":"700"}}} -->
 <p style="font-weight:700">دنبال کاتالوگ یا دیتاشیت خاصی هستی؟</p>

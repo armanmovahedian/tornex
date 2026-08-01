@@ -43,8 +43,8 @@ $tornex_testimonials = array(
 <!-- wp:column -->
 <div class="wp-block-column">
 
-<!-- wp:group {"className":"tornex-testi-card tornex-animate","backgroundColor":"white","style":{"border":{"width":"1px","color":"#E7E4E2","radius":"12px"},"spacing":{"padding":{"top":"26px","right":"26px","bottom":"26px","left":"26px"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group tornex-testi-card tornex-animate has-white-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:12px;padding-top:26px;padding-right:26px;padding-bottom:26px;padding-left:26px;transition-delay:<?php echo (int) $tornex_testi_delay; ?>ms">
+<!-- wp:group {"className":"tornex-testi-card tornex-animate","backgroundColor":"white","style":{"border":{"width":"1px","color":"#E7E4E2","radius":"14px"},"spacing":{"padding":{"top":"26px","right":"26px","bottom":"26px","left":"26px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group tornex-testi-card tornex-animate has-white-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:14px;padding-top:26px;padding-right:26px;padding-bottom:26px;padding-left:26px;transition-delay:<?php echo (int) $tornex_testi_delay; ?>ms">
 
 <!-- wp:paragraph {"textColor":"gray","fontSize":"small"} -->
 <p class="has-gray-color has-text-color has-small-font-size">«<?php echo esc_html( $testimonial['text'] ); ?>»</p>
