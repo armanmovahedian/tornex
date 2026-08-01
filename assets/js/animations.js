@@ -80,3 +80,43 @@
 		} );
 	} );
 })();
+
+// Product finder: client-side category filter (no AJAX, just show/hide
+// already-rendered cards). Independent of the animation IIFE above so it
+// still runs even when prefers-reduced-motion short-circuits that one.
+(function () {
+	'use strict';
+
+	document.addEventListener( 'DOMContentLoaded', function () {
+		var tabs = document.querySelectorAll( '.tornex-finder-tab' );
+		var items = document.querySelectorAll( '.tornex-finder-item' );
+		var emptyNotice = document.querySelector( '.tornex-finder-empty' );
+
+		if ( ! tabs.length || ! items.length ) {
+			return;
+		}
+
+		tabs.forEach( function ( tab ) {
+			tab.addEventListener( 'click', function () {
+				var filter = tab.getAttribute( 'data-tornex-filter' );
+				var visibleCount = 0;
+
+				tabs.forEach( function ( t ) {
+					t.classList.toggle( 'is-active', t === tab );
+				} );
+
+				items.forEach( function ( item ) {
+					var matches = filter === 'all' || item.getAttribute( 'data-tornex-category' ) === filter;
+					item.classList.toggle( 'is-hidden', ! matches );
+					if ( matches ) {
+						visibleCount++;
+					}
+				} );
+
+				if ( emptyNotice ) {
+					emptyNotice.hidden = visibleCount !== 0;
+				}
+			} );
+		} );
+	} );
+})();

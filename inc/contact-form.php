@@ -8,11 +8,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function tornex_contact_form_shortcode() {
-	$status = isset( $_GET['tornex_contact'] ) ? sanitize_key( $_GET['tornex_contact'] ) : '';
+	$status         = isset( $_GET['tornex_contact'] ) ? sanitize_key( $_GET['tornex_contact'] ) : '';
+	$prefill_message = ! empty( $_GET['catalog'] ) ? 'درخواست کاتالوگ/دیتاشیت کامل محصولات تورنکس' : '';
 
 	ob_start();
 	?>
-	<div class="tornex-contact-form">
+	<div class="tornex-contact-form" id="tornex-contact-form">
 		<?php if ( 'success' === $status ) : ?>
 			<p class="tornex-form-notice tornex-form-notice--success">درخواست شما با موفقیت ارسال شد. کارشناسان فروش تورنکس به‌زودی با شما تماس می‌گیرند.</p>
 		<?php elseif ( 'error' === $status ) : ?>
@@ -61,7 +62,7 @@ function tornex_contact_form_shortcode() {
 
 			<div class="tornex-form-row">
 				<label for="tornex-message">توضیحات</label>
-				<textarea id="tornex-message" name="tornex_message" rows="4"></textarea>
+				<textarea id="tornex-message" name="tornex_message" rows="4"><?php echo esc_textarea( $prefill_message ); ?></textarea>
 			</div>
 
 			<button type="submit" class="tornex-btn tornex-btn-primary">ارسال درخواست</button>

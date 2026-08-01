@@ -618,3 +618,124 @@ mark {
 	background-color: #f1e9e9 !important;
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* Popular products / product finder cards (shared) */
+.tornex-popular-grid,
+.tornex-finder-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 22px;
+}
+.tornex-popular-card {
+	display: block;
+	background: var(--white);
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	overflow: hidden;
+	transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.tornex-popular-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 14px 34px rgba(28, 27, 27, 0.12);
+	border-color: var(--red);
+}
+.tornex-popular-photo {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+}
+.tornex-popular-photo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+.tornex-popular-body {
+	padding: 18px;
+}
+.tornex-cat-badge {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 600;
+	background: rgba(181, 18, 27, 0.08);
+	color: var(--red-dark);
+	padding: 4px 12px;
+	border-radius: 20px;
+	margin-bottom: 10px;
+}
+.tornex-popular-title {
+	font-size: 15px;
+	font-weight: 700;
+	margin: 0 0 14px;
+	line-height: 1.5;
+}
+.tornex-btn-outline-sm {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--red-dark);
+	border: 1.5px solid rgba(181, 18, 27, 0.35);
+	border-radius: 6px;
+	padding: 7px 16px;
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.tornex-popular-card:hover .tornex-btn-outline-sm {
+	background: var(--red);
+	border-color: var(--red);
+	color: var(--white);
+}
+
+@media (max-width: 900px) {
+	.tornex-popular-grid,
+	.tornex-finder-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (max-width: 600px) {
+	.tornex-popular-grid,
+	.tornex-finder-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Product finder */
+.tornex-finder-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	margin-bottom: 32px;
+}
+.tornex-finder-tab {
+	background: var(--white);
+	border: 1.5px solid var(--border);
+	color: var(--gray);
+	font-size: 14px;
+	font-weight: 600;
+	padding: 9px 20px;
+	border-radius: 30px;
+	cursor: pointer;
+	transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.tornex-finder-tab:hover {
+	border-color: var(--red);
+	color: var(--red-dark);
+}
+.tornex-finder-tab.is-active {
+	background: var(--red);
+	border-color: var(--red);
+	color: var(--white);
+}
+.tornex-finder-item.is-hidden {
+	display: none;
+}
+.tornex-finder-empty {
+	text-align: center;
+	color: var(--gray);
+	margin-top: 24px;
+}
+.tornex-finder-cta {
+	align-items: center;
+}
+.tornex-finder-cta p {
+	margin: 0;
+}

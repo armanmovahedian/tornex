@@ -94,6 +94,22 @@ function tornex_category_stock_image( $category_name ) {
 }
 
 /**
+ * Stable ASCII key per product category, used as a data-filter value in the
+ * interactive product finder (avoids relying on WordPress's percent-encoded
+ * term slugs for non-Latin term names).
+ */
+function tornex_category_filter_key( $category_name ) {
+	$map = array(
+		'فیبر نوری'                    => 'fiber',
+		'تجهیزات شبکه'                 => 'network',
+		'سیم و کابل خراسان افشارنژاد'  => 'cable',
+		'سایر تجهیزات کابل'            => 'other',
+	);
+
+	return isset( $map[ $category_name ] ) ? $map[ $category_name ] : 'other';
+}
+
+/**
  * Pattern category so all Tornex patterns group together in the inserter.
  */
 function tornex_register_pattern_category() {
