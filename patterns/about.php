@@ -25,6 +25,20 @@
 </div>
 <!-- /wp:group -->
 
+<?php
+// TODO: replace with a real photo of the Tornex warehouse/team.
+$tornex_about_photo_url = get_stylesheet_directory_uri() . '/assets/img/about-warehouse.jpg';
+?>
+<!-- wp:group {"align":"wide","className":"tornex-about-photo","textColor":"white","style":{"spacing":{"padding":{"top":"32px","right":"32px","bottom":"32px","left":"32px"}}},"layout":{"type":"flex","orientation":"vertical","verticalAlignment":"bottom"}} -->
+<div class="wp-block-group alignwide tornex-about-photo has-white-color has-text-color" style="padding-top:32px;padding-right:32px;padding-bottom:32px;padding-left:32px;background-image:url('<?php echo esc_url( $tornex_about_photo_url ); ?>')">
+
+<!-- wp:paragraph {"fontSize":"small","style":{"typography":{"fontWeight":"700"}}} -->
+<p class="has-small-font-size" style="font-weight:700">انبار و عملیات تورنکس</p>
+<!-- /wp:paragraph -->
+
+</div>
+<!-- /wp:group -->
+
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"56px","right":"24px","bottom":"16px","left":"24px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-top:56px;padding-right:24px;padding-bottom:16px;padding-left:24px">
 

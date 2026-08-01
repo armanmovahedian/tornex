@@ -77,6 +77,23 @@ function tornex_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'tornex_enqueue_assets' );
 
 /**
+ * Stock fallback photo for a product category, used until real product
+ * photos are uploaded. Falls back to the cable image for unknown categories.
+ */
+function tornex_category_stock_image( $category_name ) {
+	$map = array(
+		'فیبر نوری'                    => 'category-fiber.jpg',
+		'تجهیزات شبکه'                 => 'category-network.jpg',
+		'سیم و کابل خراسان افشارنژاد'  => 'category-cable.jpg',
+		'سایر تجهیزات کابل'            => 'category-other.jpg',
+	);
+
+	$file = isset( $map[ $category_name ] ) ? $map[ $category_name ] : 'category-cable.jpg';
+
+	return get_stylesheet_directory_uri() . '/assets/img/' . $file;
+}
+
+/**
  * Pattern category so all Tornex patterns group together in the inserter.
  */
 function tornex_register_pattern_category() {

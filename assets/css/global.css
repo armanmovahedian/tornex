@@ -230,15 +230,25 @@ mark {
 	border-radius: 10px;
 	overflow: hidden;
 }
-.tornex-product-gallery--placeholder {
-	background: var(--bg-soft);
-	border: 1px solid var(--border);
-	color: var(--gray);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 260px;
-	border-radius: 10px;
+.tornex-product-gallery--stock {
+	position: relative;
+}
+.tornex-product-gallery--stock img {
+	width: 100%;
+	height: 320px;
+	object-fit: cover;
+	display: block;
+}
+.tornex-stock-badge {
+	position: absolute;
+	bottom: 12px;
+	right: 12px;
+	background: rgba(28, 27, 27, 0.75);
+	color: var(--white);
+	font-size: 12px;
+	padding: 5px 12px;
+	border-radius: 20px;
+	font-weight: 600;
 }
 
 .tornex-spec-table {
@@ -298,7 +308,9 @@ mark {
 
 /* Hero */
 .tornex-hero {
-	background: linear-gradient(180deg, var(--ink) 0%, #262424 100%);
+	background-image: linear-gradient(180deg, rgba(28, 27, 27, 0.9) 0%, rgba(38, 36, 36, 0.94) 100%), url(../img/category-fiber.jpg);
+	background-size: cover;
+	background-position: center;
 }
 
 @media (max-width: 600px) {
@@ -379,6 +391,22 @@ mark {
 }
 .tornex-cat-4 {
 	background: linear-gradient(135deg, #333, #1c1b1b);
+}
+
+/* About page photo banner */
+.tornex-about-photo {
+	position: relative;
+	overflow: hidden;
+	border-radius: 12px;
+	min-height: 280px;
+	background-size: cover;
+	background-position: center;
+}
+.tornex-about-photo::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(28, 27, 27, 0.25), rgba(28, 27, 27, 0.75));
 }
 
 /* Team member chip (about page) */

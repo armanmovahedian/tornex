@@ -43,7 +43,10 @@ while ( have_posts() ) :
 			</div>
 		<?php else : ?>
 			<!-- TODO: replace with real product photo -->
-			<div class="tornex-product-gallery tornex-product-gallery--placeholder">تصویر محصول به‌زودی</div>
+			<div class="tornex-product-gallery tornex-product-gallery--stock">
+				<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_category ? $tornex_category->name : '' ) ); ?>" alt="">
+				<span class="tornex-stock-badge">نمونه تصویر — عکس واقعی به‌زودی</span>
+			</div>
 		<?php endif; ?>
 
 		<div class="tornex-product-content">
@@ -92,10 +95,15 @@ while ( have_posts() ) :
 					<?php
 					while ( $tornex_related->have_posts() ) :
 						$tornex_related->the_post();
+						$tornex_related_terms = get_the_terms( get_the_ID(), 'product_category' );
+						$tornex_related_term  = ( $tornex_related_terms && ! is_wp_error( $tornex_related_terms ) ) ? $tornex_related_terms[0] : null;
 						?>
 						<a href="<?php the_permalink(); ?>" class="tornex-related-card">
 							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'medium' ); ?>
+							<?php else : ?>
+								<!-- TODO: replace with real product photo -->
+								<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_related_term ? $tornex_related_term->name : '' ) ); ?>" alt="">
 							<?php endif; ?>
 							<span><?php the_title(); ?></span>
 						</a>

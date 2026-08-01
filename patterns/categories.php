@@ -8,11 +8,24 @@
  */
 
 $tornex_categories = array(
-	'فیبر نوری',
-	'تجهیزات شبکه',
-	'سیم و کابل خراسان افشارنژاد',
-	'سایر تجهیزات کابل',
+	array(
+		'name'  => 'فیبر نوری',
+		'image' => 'category-fiber.jpg',
+	),
+	array(
+		'name'  => 'تجهیزات شبکه',
+		'image' => 'category-network.jpg',
+	),
+	array(
+		'name'  => 'سیم و کابل خراسان افشارنژاد',
+		'image' => 'category-cable.jpg',
+	),
+	array(
+		'name'  => 'سایر تجهیزات کابل',
+		'image' => 'category-other.jpg',
+	),
 );
+// TODO: replace with real category photos once available.
 ?>
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"72px","right":"24px","bottom":"72px","left":"24px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-top:72px;padding-right:24px;padding-bottom:72px;padding-left:24px">
@@ -30,13 +43,14 @@ $tornex_categories = array(
 <?php foreach ( $tornex_categories as $tornex_cat_index => $category ) : ?>
 <?php $tornex_swatch_class = 'tornex-cat-' . ( ( $tornex_cat_index % 4 ) + 1 ); ?>
 <?php $tornex_cat_delay = $tornex_cat_index * 90; ?>
+<?php $tornex_cat_image = get_stylesheet_directory_uri() . '/assets/img/' . $category['image']; ?>
 <!-- wp:column -->
 <div class="wp-block-column">
 
 <!-- wp:group {"textColor":"white","className":"tornex-cat-card tornex-animate <?php echo esc_attr( $tornex_swatch_class ); ?>","style":{"border":{"radius":"12px"},"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"},"blockGap":"0","minHeight":"180px"}},"layout":{"type":"flex","orientation":"vertical","verticalAlignment":"bottom"}} -->
-<div class="wp-block-group tornex-cat-card tornex-animate <?php echo esc_attr( $tornex_swatch_class ); ?> has-white-color has-text-color" style="border-radius:12px;min-height:180px;padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;transition-delay:<?php echo (int) $tornex_cat_delay; ?>ms">
+<div class="wp-block-group tornex-cat-card tornex-animate <?php echo esc_attr( $tornex_swatch_class ); ?> has-white-color has-text-color" style="border-radius:12px;min-height:180px;padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;transition-delay:<?php echo (int) $tornex_cat_delay; ?>ms;background-image:url('<?php echo esc_url( $tornex_cat_image ); ?>');background-size:cover;background-position:center">
 <!-- wp:paragraph {"style":{"typography":{"fontWeight":"700"}}} -->
-<p style="font-weight:700"><?php echo esc_html( $category ); ?></p>
+<p style="font-weight:700"><?php echo esc_html( $category['name'] ); ?></p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
