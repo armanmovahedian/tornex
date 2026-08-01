@@ -6,6 +6,10 @@
  * Categories: tornex
  * Viewport Width: 1400
  */
+
+$tornex_hero_contact_id  = get_theme_mod( 'tornex_contact_page' );
+$tornex_hero_contact_url = $tornex_hero_contact_id ? get_permalink( $tornex_hero_contact_id ) : home_url( '/' );
+$tornex_hero_products_url = get_post_type_archive_link( 'product' ) ?: home_url( '/' );
 ?>
 <!-- wp:group {"align":"full","className":"tornex-hero tornex-texture-grid","style":{"spacing":{"padding":{"top":"88px","right":"24px","bottom":"96px","left":"24px"}}},"textColor":"white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull tornex-hero tornex-texture-grid has-white-color has-text-color" style="padding-top:88px;padding-right:24px;padding-bottom:96px;padding-left:24px">
@@ -26,11 +30,11 @@
 <div class="wp-block-buttons">
 
 <!-- wp:button {"backgroundColor":"brand-red","textColor":"white","style":{"border":{"radius":"6px"}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-brand-red-background-color has-text-color has-background wp-element-button" style="border-radius:6px" href="#">درخواست استعلام قیمت</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-brand-red-background-color has-text-color has-background wp-element-button" style="border-radius:6px" href="<?php echo esc_url( $tornex_hero_contact_url ); ?>">درخواست استعلام قیمت</a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"textColor":"white","className":"is-style-outline","style":{"border":{"radius":"6px"}}} -->
-<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" style="border-radius:6px" href="#">مشاهده محصولات</a></div>
+<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" style="border-radius:6px" href="<?php echo esc_url( $tornex_hero_products_url ); ?>">مشاهده محصولات</a></div>
 <!-- /wp:button -->
 
 </div>

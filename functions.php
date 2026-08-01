@@ -141,7 +141,9 @@ function tornex_register_patterns() {
 		) );
 	}
 }
-add_action( 'init', 'tornex_register_patterns' );
+// Priority 20: patterns render their PHP immediately on registration and may
+// need the product CPT/archive link, which registers at the default priority.
+add_action( 'init', 'tornex_register_patterns', 20 );
 
 /**
  * Auto-load every ACF field-group definition under fields/{name}.php.

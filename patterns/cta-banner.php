@@ -6,6 +6,9 @@
  * Categories: tornex
  * Viewport Width: 1400
  */
+
+$tornex_ctabanner_contact_id  = get_theme_mod( 'tornex_contact_page' );
+$tornex_ctabanner_contact_url = $tornex_ctabanner_contact_id ? get_permalink( $tornex_ctabanner_contact_id ) : home_url( '/' );
 ?>
 <!-- wp:group {"align":"full","textColor":"white","backgroundColor":"brand-red","style":{"spacing":{"padding":{"top":"52px","right":"24px","bottom":"52px","left":"24px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-white-color has-brand-red-background-color has-text-color has-background" style="padding-top:52px;padding-right:24px;padding-bottom:52px;padding-left:24px">
@@ -21,7 +24,7 @@
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"white","textColor":"brand-red","style":{"border":{"radius":"6px"}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-brand-red-color has-white-background-color has-text-color has-background wp-element-button" style="border-radius:6px" href="#">تماس با ما</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-brand-red-color has-white-background-color has-text-color has-background wp-element-button" style="border-radius:6px" href="<?php echo esc_url( $tornex_ctabanner_contact_url ); ?>">تماس با ما</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
