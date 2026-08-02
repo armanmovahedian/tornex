@@ -11,6 +11,6 @@
 		"WP_DEBUG_DISPLAY": false
 	},
 	"lifecycleScripts": {
-		"afterStart": "wp-env run cli wp theme activate tornex && wp-env run cli wp plugin activate advanced-custom-fields wordpress-seo && wp-env run cli wp rewrite structure /%postname%/ --hard"
+		"afterStart": "wp-env run cli wp theme activate tornex && wp-env run cli wp plugin activate advanced-custom-fields wordpress-seo && wp-env run cli wp rewrite structure /%postname%/ --hard && wp-env run cli wp language core install fa_IR --activate && wp-env run cli wp language plugin install wordpress-seo fa_IR && wp-env run cli wp language plugin install advanced-custom-fields fa_IR"
 	}
 }
