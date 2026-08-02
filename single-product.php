@@ -8,8 +8,9 @@ get_header();
 while ( have_posts() ) :
 	the_post();
 
-	$tornex_categories = get_the_terms( get_the_ID(), 'product_category' );
-	$tornex_category   = ( $tornex_categories && ! is_wp_error( $tornex_categories ) ) ? $tornex_categories[0] : null;
+	$tornex_categories  = get_the_terms( get_the_ID(), 'product_category' );
+	$tornex_category    = ( $tornex_categories && ! is_wp_error( $tornex_categories ) ) ? $tornex_categories[0] : null;
+	$tornex_top_category = tornex_top_level_category( $tornex_category );
 
 	$tornex_specs = array(
 		'برند'        => get_field( 'brand' ),
@@ -47,7 +48,7 @@ while ( have_posts() ) :
 		<?php else : ?>
 			<!-- TODO: replace with real product photo -->
 			<div class="tornex-product-gallery tornex-product-gallery--stock">
-				<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_category ? $tornex_category->name : '' ) ); ?>" alt="">
+				<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_top_category ? $tornex_top_category->name : '' ) ); ?>" alt="">
 				<span class="tornex-stock-badge">نمونه تصویر — عکس واقعی به‌زودی</span>
 			</div>
 		<?php endif; ?>
@@ -105,15 +106,16 @@ while ( have_posts() ) :
 					<?php
 					while ( $tornex_related->have_posts() ) :
 						$tornex_related->the_post();
-						$tornex_related_terms = get_the_terms( get_the_ID(), 'product_category' );
-						$tornex_related_term  = ( $tornex_related_terms && ! is_wp_error( $tornex_related_terms ) ) ? $tornex_related_terms[0] : null;
+						$tornex_related_terms   = get_the_terms( get_the_ID(), 'product_category' );
+						$tornex_related_term    = ( $tornex_related_terms && ! is_wp_error( $tornex_related_terms ) ) ? $tornex_related_terms[0] : null;
+						$tornex_related_top_cat = tornex_top_level_category( $tornex_related_term );
 						?>
 						<a href="<?php the_permalink(); ?>" class="tornex-related-card">
 							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'medium' ); ?>
 							<?php else : ?>
 								<!-- TODO: replace with real product photo -->
-								<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_related_term ? $tornex_related_term->name : '' ) ); ?>" alt="">
+								<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_related_top_cat ? $tornex_related_top_cat->name : '' ) ); ?>" alt="">
 							<?php endif; ?>
 							<span><?php the_title(); ?></span>
 						</a>

@@ -35,9 +35,10 @@ $tornex_products_archive_url = get_post_type_archive_link( 'product' ) ?: home_u
 $tornex_popular_index = 0;
 while ( $tornex_popular_query->have_posts() ) :
 	$tornex_popular_query->the_post();
-	$tornex_popular_terms = get_the_terms( get_the_ID(), 'product_category' );
-	$tornex_popular_term  = ( $tornex_popular_terms && ! is_wp_error( $tornex_popular_terms ) ) ? $tornex_popular_terms[0] : null;
-	$tornex_popular_delay = $tornex_popular_index * 80;
+	$tornex_popular_terms  = get_the_terms( get_the_ID(), 'product_category' );
+	$tornex_popular_term   = ( $tornex_popular_terms && ! is_wp_error( $tornex_popular_terms ) ) ? $tornex_popular_terms[0] : null;
+	$tornex_popular_top_cat = tornex_top_level_category( $tornex_popular_term );
+	$tornex_popular_delay  = $tornex_popular_index * 80;
 	$tornex_popular_index++;
 	?>
 	<a href="<?php the_permalink(); ?>" class="tornex-popular-card tornex-animate" style="transition-delay:<?php echo (int) $tornex_popular_delay; ?>ms">
@@ -46,7 +47,7 @@ while ( $tornex_popular_query->have_posts() ) :
 				<?php the_post_thumbnail( 'medium' ); ?>
 			<?php else : ?>
 				<!-- TODO: replace with real product photo -->
-				<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_popular_term ? $tornex_popular_term->name : '' ) ); ?>" alt="">
+				<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_popular_top_cat ? $tornex_popular_top_cat->name : '' ) ); ?>" alt="">
 			<?php endif; ?>
 		</div>
 		<div class="tornex-popular-body">

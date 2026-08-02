@@ -51,9 +51,10 @@ $tornex_finder_catalog_url = add_query_arg( 'catalog', '1', $tornex_finder_conta
 if ( $tornex_finder_query->have_posts() ) :
 	while ( $tornex_finder_query->have_posts() ) :
 		$tornex_finder_query->the_post();
-		$tornex_finder_terms = get_the_terms( get_the_ID(), 'product_category' );
-		$tornex_finder_term  = ( $tornex_finder_terms && ! is_wp_error( $tornex_finder_terms ) ) ? $tornex_finder_terms[0] : null;
-		$tornex_finder_key   = tornex_category_filter_key( $tornex_finder_term ? $tornex_finder_term->name : '' );
+		$tornex_finder_terms  = get_the_terms( get_the_ID(), 'product_category' );
+		$tornex_finder_term   = ( $tornex_finder_terms && ! is_wp_error( $tornex_finder_terms ) ) ? $tornex_finder_terms[0] : null;
+		$tornex_finder_top_cat = tornex_top_level_category( $tornex_finder_term );
+		$tornex_finder_key    = tornex_category_filter_key( $tornex_finder_top_cat ? $tornex_finder_top_cat->name : '' );
 		?>
 		<a href="<?php the_permalink(); ?>" class="tornex-popular-card tornex-finder-item" data-tornex-category="<?php echo esc_attr( $tornex_finder_key ); ?>">
 			<div class="tornex-popular-photo">
@@ -61,7 +62,7 @@ if ( $tornex_finder_query->have_posts() ) :
 					<?php the_post_thumbnail( 'medium' ); ?>
 				<?php else : ?>
 					<!-- TODO: replace with real product photo -->
-					<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_finder_term ? $tornex_finder_term->name : '' ) ); ?>" alt="">
+					<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_finder_top_cat ? $tornex_finder_top_cat->name : '' ) ); ?>" alt="">
 				<?php endif; ?>
 			</div>
 			<div class="tornex-popular-body">

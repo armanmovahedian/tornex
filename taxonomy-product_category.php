@@ -5,7 +5,8 @@
 
 get_header();
 
-$tornex_term = get_queried_object();
+$tornex_term     = get_queried_object();
+$tornex_top_term = tornex_top_level_category( $tornex_term );
 
 $tornex_contact_id  = get_theme_mod( 'tornex_contact_page' );
 $tornex_contact_url = $tornex_contact_id ? get_permalink( $tornex_contact_id ) : home_url( '/' );
@@ -46,7 +47,7 @@ $tornex_products_url = get_post_type_archive_link( 'product' ) ?: home_url( '/' 
 						<?php the_post_thumbnail( 'medium' ); ?>
 					<?php else : ?>
 						<!-- TODO: replace with real product photo -->
-						<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_term->name ) ); ?>" alt="">
+						<img src="<?php echo esc_url( tornex_category_stock_image( $tornex_top_term ? $tornex_top_term->name : '' ) ); ?>" alt="">
 					<?php endif; ?>
 					<span><?php the_title(); ?></span>
 				</a>

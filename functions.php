@@ -100,8 +100,33 @@ function tornex_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'tornex_enqueue_assets' );
 
 /**
+ * Walk a product_category term up to its top-level ancestor. Needed because
+ * every product is now assigned to a specific child term (e.g. "کابل زمینی"),
+ * not the parent (e.g. "سیم و کابل خراسان افشارنژاد") -- callers that need
+ * the broad category (stock-image fallback) must resolve up to that ancestor
+ * explicitly rather than assuming the product's own term is already top-level.
+ */
+function tornex_top_level_category( $term ) {
+	if ( ! ( $term instanceof WP_Term ) ) {
+		return null;
+	}
+
+	while ( $term->parent ) {
+		$parent = get_term( $term->parent, $term->taxonomy );
+		if ( ! $parent || is_wp_error( $parent ) ) {
+			break;
+		}
+		$term = $parent;
+	}
+
+	return $term;
+}
+
+/**
  * Stock fallback photo for a product category, used until real product
  * photos are uploaded. Falls back to the cable image for unknown categories.
+ * Expects one of the 4 top-level category names -- pass the term through
+ * tornex_top_level_category() first if it might be a child/subcategory term.
  */
 function tornex_category_stock_image( $category_name ) {
 	$map = array(
