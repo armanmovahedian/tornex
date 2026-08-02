@@ -1240,6 +1240,30 @@ mark {
 	}
 }
 
+/* Team CTA (mid-homepage) */
+.tornex-team-cta {
+	position: relative;
+	background-image: linear-gradient(180deg, rgba(28, 27, 27, 0.72) 0%, rgba(20, 19, 19, 0.82) 100%), url(../img/team-cta-bg.jpg);
+	background-size: cover;
+	background-position: center;
+}
+.tornex-team-cta-content {
+	max-width: 560px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+.tornex-team-cta-logo {
+	height: 30px;
+	width: auto;
+	margin-bottom: 22px;
+}
+.tornex-team-cta h2 {
+	text-wrap: balance;
+}
+
 /* Product category archive */
 .tornex-category-archive {
 	padding: 32px 24px 0;
