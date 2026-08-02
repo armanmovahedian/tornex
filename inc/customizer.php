@@ -37,8 +37,9 @@ function tornex_customize_register( $wp_customize ) {
 	}
 
 	$page_settings = array(
-		'tornex_contact_page' => __( 'صفحه تماس با ما', 'tornex' ),
-		'tornex_about_page'   => __( 'صفحه درباره ما', 'tornex' ),
+		'tornex_contact_page'   => __( 'صفحه تماس با ما', 'tornex' ),
+		'tornex_about_page'     => __( 'صفحه درباره ما', 'tornex' ),
+		'tornex_pricelist_page' => __( 'صفحه لیست قیمت / پیش‌فاکتور', 'tornex' ),
 	);
 
 	foreach ( $page_settings as $setting => $label ) {
