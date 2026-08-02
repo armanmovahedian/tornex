@@ -69,7 +69,6 @@ Vazirmatn (فارسی، از Google Fonts) — برای هدینگ و بدنه �
 | عکس واقعی تیم/انبار | `assets/img/team-cta-bg.jpg` | عکس استوک Unsplash |
 | عکس محصولات | هر محصول (Featured Image) | فال‌بک عکس استوک بر اساس دسته |
 | فایل دیتاشیت هر محصول | فیلد ACF `datasheet` روی هر محصول | خالی → دکمه «به‌زودی» |
-| آدرس دقیق برای پین نقشه | `footer.php` (`.tornex-footer-map`) | نقشه واقعی گوگل رو منطقه‌ی کلی لاله‌زار، غیرفعال با overlay |
 | آیکون هر دسته/زیردسته مگامنو | فیلد ACF `category_icon` روی ترم (Products → Categories) | آیکون پیش‌فرض placeholder |
 | متن «مشتریان ما» (لوگو/عدد) | `patterns/about.php` | متن جای‌گیر |
 | نام/شرکت واقعی نظرات مشتریان | `patterns/testimonials.php` | متن نقل‌قول نهایی، ولی نام «مشتری نمونه» |
