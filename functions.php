@@ -7,6 +7,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Convert ASCII digits in a string/number to Persian numerals.
+ */
+function tornex_fa_digits( $n ) {
+	return str_replace(
+		array( '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ),
+		array( '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' ),
+		(string) $n
+	);
+}
+
 function tornex_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
@@ -73,6 +84,18 @@ function tornex_enqueue_assets() {
 		filemtime( get_stylesheet_directory() . '/assets/js/animations.js' ),
 		true
 	);
+
+	wp_enqueue_script(
+		'tornex-product-search',
+		get_stylesheet_directory_uri() . '/assets/js/product-search.js',
+		array(),
+		filemtime( get_stylesheet_directory() . '/assets/js/product-search.js' ),
+		true
+	);
+	wp_localize_script( 'tornex-product-search', 'tornexAjax', array(
+		'url'   => admin_url( 'admin-ajax.php' ),
+		'nonce' => wp_create_nonce( 'tornex_product_search' ),
+	) );
 }
 add_action( 'wp_enqueue_scripts', 'tornex_enqueue_assets' );
 
@@ -235,3 +258,4 @@ add_action( 'acf/init', 'tornex_load_field_groups' );
 require get_stylesheet_directory() . '/inc/customizer.php';
 require get_stylesheet_directory() . '/inc/contact-form.php';
 require get_stylesheet_directory() . '/inc/product-cpt.php';
+require get_stylesheet_directory() . '/inc/lead-forms.php';

@@ -7,14 +7,6 @@
  * Viewport Width: 1400
  */
 
-function tornex_fa_digits( $n ) {
-	return str_replace(
-		array( '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' ),
-		array( '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' ),
-		(string) $n
-	);
-}
-
 $tornex_why_stats = array(
 	array( 'prefix' => '+', 'target' => 8, 'suffix' => '', 'label' => 'سال تجربه' ),
 	array( 'prefix' => '', 'target' => 100, 'suffix' => '٪', 'label' => 'فاکتور رسمی' ),
