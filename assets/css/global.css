@@ -145,6 +145,130 @@ mark {
 	}
 }
 
+/* Mega-menu */
+.tornex-megabar {
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tornex-megabar-list {
+	list-style: none;
+	display: flex;
+	gap: 6px;
+	margin: 0;
+	padding: 0;
+	overflow-x: auto;
+}
+.tornex-megabar-item {
+	position: relative;
+}
+.tornex-megabar-link {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 13px 14px;
+	font-size: 13.5px;
+	font-weight: 600;
+	color: #d8d6d5;
+	white-space: nowrap;
+	transition: color 0.2s, background-color 0.2s;
+}
+.tornex-megabar-link:hover,
+.tornex-megabar-item:hover .tornex-megabar-link {
+	color: var(--white);
+	background: rgba(255, 255, 255, 0.05);
+}
+.tornex-megabar-caret {
+	width: 0;
+	height: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 5px solid currentColor;
+	opacity: 0.55;
+	transition: transform 0.2s ease;
+}
+.tornex-megabar-item:hover .tornex-megabar-caret {
+	transform: rotate(180deg);
+}
+
+.tornex-megaicon-img {
+	width: 18px;
+	height: 18px;
+	object-fit: contain;
+	border-radius: 3px;
+	flex-shrink: 0;
+}
+.tornex-megaicon-fallback {
+	display: inline-flex;
+	color: var(--red);
+	opacity: 0.85;
+	flex-shrink: 0;
+}
+
+.tornex-megapanel {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: min(640px, 90vw);
+	background: var(--white);
+	border-radius: 14px;
+	box-shadow: var(--shadow-lg);
+	padding: 22px 24px 16px;
+	margin-top: 10px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(6px);
+	transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+	z-index: 60;
+}
+.tornex-megabar-item:hover .tornex-megapanel,
+.tornex-megabar-item:focus-within .tornex-megapanel {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+.tornex-megapanel-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 4px 28px;
+}
+.tornex-megapanel-cell {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 6px;
+	border-radius: 8px;
+	color: var(--ink);
+	font-size: 14px;
+	transition: background-color 0.15s, color 0.15s;
+}
+.tornex-megapanel-cell:hover {
+	background: var(--bg-soft);
+	color: var(--red);
+}
+.tornex-megapanel-cell .tornex-megaicon-fallback {
+	color: var(--gray);
+}
+.tornex-megapanel-cell:hover .tornex-megaicon-fallback {
+	color: var(--red);
+}
+.tornex-megapanel-viewall {
+	display: block;
+	margin-top: 14px;
+	padding-top: 14px;
+	border-top: 1px solid var(--border);
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--red-dark);
+}
+.tornex-megapanel-viewall:hover {
+	color: var(--red);
+}
+
+@media (max-width: 900px) {
+	.tornex-megabar {
+		display: none;
+	}
+}
+
 @media (max-width: 600px) {
 	.site-logo img {
 		height: 24px;

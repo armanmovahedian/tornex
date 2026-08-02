@@ -110,6 +110,57 @@ function tornex_category_filter_key( $category_name ) {
 }
 
 /**
+ * Icon <img>/fallback markup for a product_category term (used in the header
+ * mega-menu). Reads the `category_icon` ACF image field on the term; when no
+ * icon has been uploaded yet, renders a neutral placeholder glyph instead.
+ */
+function tornex_category_icon_html( $term_id ) {
+	$icon = function_exists( 'get_field' ) ? get_field( 'category_icon', 'product_category_' . $term_id ) : null;
+
+	if ( ! empty( $icon['sizes']['thumbnail'] ) ) {
+		return '<img src="' . esc_url( $icon['sizes']['thumbnail'] ) . '" alt="" class="tornex-megaicon-img">';
+	}
+
+	// TODO: replace with real per-category icons from wp-admin (Products -> Categories -> icon field).
+	return '<span class="tornex-megaicon-fallback" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M8 12h8M12 8v8"/></svg></span>';
+}
+
+/**
+ * Mega-menu data: each top-level product_category term with its child terms,
+ * built straight from the real taxonomy -- no hardcoded category list.
+ */
+function tornex_get_megamenu_data() {
+	$parents = get_terms( array(
+		'taxonomy'   => 'product_category',
+		'parent'     => 0,
+		'hide_empty' => false,
+		'orderby'    => 'term_id',
+	) );
+
+	if ( is_wp_error( $parents ) ) {
+		return array();
+	}
+
+	$data = array();
+
+	foreach ( $parents as $parent ) {
+		$children = get_terms( array(
+			'taxonomy'   => 'product_category',
+			'parent'     => $parent->term_id,
+			'hide_empty' => false,
+			'orderby'    => 'term_id',
+		) );
+
+		$data[] = array(
+			'term'     => $parent,
+			'children' => is_wp_error( $children ) ? array() : $children,
+		);
+	}
+
+	return $data;
+}
+
+/**
  * Pattern category so all Tornex patterns group together in the inserter.
  */
 function tornex_register_pattern_category() {
