@@ -184,6 +184,7 @@ mark {
 .tornex-megabar-list {
 	list-style: none;
 	display: flex;
+	justify-content: center;
 	gap: 6px;
 	margin: 0;
 	padding: 0;
