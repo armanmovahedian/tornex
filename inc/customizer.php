@@ -14,12 +14,13 @@ function tornex_customize_register( $wp_customize ) {
 	) );
 
 	$fields = array(
-		'tornex_phone'      => array( 'label' => 'تلفن', 'type' => 'text' ),
-		'tornex_email'      => array( 'label' => 'ایمیل', 'type' => 'text' ),
-		'tornex_address'    => array( 'label' => 'آدرس', 'type' => 'textarea' ),
-		'tornex_telegram'   => array( 'label' => 'لینک تلگرام', 'type' => 'url' ),
-		'tornex_whatsapp'   => array( 'label' => 'لینک واتساپ', 'type' => 'url' ),
-		'tornex_instagram'  => array( 'label' => 'لینک اینستاگرام', 'type' => 'url' ),
+		'tornex_phone'        => array( 'label' => 'تلفن', 'type' => 'text' ),
+		'tornex_email'        => array( 'label' => 'ایمیل', 'type' => 'text' ),
+		'tornex_address'      => array( 'label' => 'آدرس', 'type' => 'textarea' ),
+		'tornex_telegram'     => array( 'label' => 'لینک تلگرام', 'type' => 'url' ),
+		'tornex_whatsapp'     => array( 'label' => 'لینک واتساپ', 'type' => 'url' ),
+		'tornex_instagram'    => array( 'label' => 'لینک اینستاگرام', 'type' => 'url' ),
+		'tornex_map_embed_url' => array( 'label' => 'لینک امبد نقشه گوگل (src از کد Embed گوگل‌مپ)', 'type' => 'url' ),
 	);
 
 	foreach ( $fields as $setting => $args ) {

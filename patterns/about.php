@@ -2,7 +2,7 @@
 /**
  * Title: درباره ما
  * Slug: tornex/about
- * Description: محتوای کامل صفحه درباره ما (متن اصلی، تکرار ارزش‌های پیشنهادی، بخش مشتریان)
+ * Description: محتوای کامل صفحه درباره ما (متن اصلی، تکرار ارزش‌های پیشنهادی، بخش مشتریان، نقشه)
  * Categories: tornex
  * Viewport Width: 1400
  */
@@ -98,6 +98,28 @@ $tornex_team = array(
 <!-- wp:paragraph {"align":"center","textColor":"gray","style":{"spacing":{"margin":{"top":"18px"}}}} -->
 <p class="has-text-align-center has-gray-color has-text-color" style="margin-top:18px">[جای‌گیر — لوگو و تعداد مشتریان بعد از دریافت اطلاعات واقعی]</p>
 <!-- /wp:paragraph -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"64px","right":"24px","bottom":"72px","left":"24px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-top:64px;padding-right:24px;padding-bottom:72px;padding-left:24px">
+
+<!-- wp:paragraph {"align":"center","fontSize":"small","textColor":"brand-red","style":{"typography":{"fontWeight":"700"}}} -->
+<p class="has-text-align-center has-brand-red-color has-text-color has-small-font-size" style="font-weight:700">موقعیت ما</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"textAlign":"center","level":2,"fontSize":"x-large"} -->
+<h2 class="wp-block-heading has-text-align-center has-x-large-font-size">دفتر و انبار تورنکس رو روی نقشه پیدا کنید</h2>
+<!-- /wp:heading -->
+
+<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"32px"}},"border":{"width":"1px","color":"#E7E4E2","radius":"14px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide" style="border-color:#E7E4E2;border-width:1px;border-radius:14px;margin-top:32px">
+
+<?php echo tornex_map_embed_html( 320 ); ?>
+
+</div>
+<!-- /wp:group -->
 
 </div>
 <!-- /wp:group -->

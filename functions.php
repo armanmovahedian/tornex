@@ -100,6 +100,26 @@ function tornex_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'tornex_enqueue_assets' );
 
 /**
+ * Reusable Google Maps embed (About, Contact, footer) driven by the
+ * `tornex_map_embed_url` Customizer setting, so the pin can be moved from
+ * wp-admin without touching code. Renders nothing if no URL is set yet.
+ */
+function tornex_map_embed_html( $height = 320, $class = '' ) {
+	$url = get_theme_mod( 'tornex_map_embed_url' );
+
+	if ( ! $url ) {
+		return '<p class="tornex-map-missing">نقشه هنوز تنظیم نشده — از Appearance ← Customize ← اطلاعات تماس، لینک امبد نقشه رو وارد کنید.</p>';
+	}
+
+	return sprintf(
+		'<div class="tornex-map-embed %s" style="height:%dpx"><iframe src="%s" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="موقعیت تورنکس روی نقشه"></iframe></div>',
+		esc_attr( $class ),
+		(int) $height,
+		esc_url( $url )
+	);
+}
+
+/**
  * Walk a product_category term up to its top-level ancestor. Needed because
  * every product is now assigned to a specific child term (e.g. "کابل زمینی"),
  * not the parent (e.g. "سیم و کابل خراسان افشارنژاد") -- callers that need

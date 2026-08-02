@@ -395,29 +395,30 @@ mark {
 	color: #83807e;
 }
 
-.tornex-footer-map {
+/* Shared Google Maps embed (footer, contact, about) */
+.tornex-map-embed {
 	position: relative;
-	border-radius: 10px;
+	border-radius: 14px;
 	overflow: hidden;
-	border: 1px solid #3a3736;
-	height: 140px;
 }
-.tornex-footer-map iframe {
+.tornex-map-embed iframe {
+	display: block;
 	width: 100%;
 	height: 100%;
 	border: 0;
-	filter: grayscale(0.3) brightness(0.85);
-	pointer-events: none;
 }
-.tornex-footer-map-overlay {
-	position: absolute;
-	inset: 0;
-	display: flex;
-	align-items: flex-end;
-	padding: 10px;
-	font-size: 11px;
-	color: var(--white);
-	background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 55%);
+.tornex-map-missing {
+	padding: 16px;
+	font-size: 13px;
+	color: var(--gray);
+	background: var(--bg-soft);
+	border: 1px dashed var(--border);
+	border-radius: 10px;
+	margin: 0;
+}
+
+.tornex-footer-map {
+	border: 1px solid #3a3736;
 }
 
 .tornex-footer-bottom {

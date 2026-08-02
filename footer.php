@@ -81,11 +81,7 @@ $tornex_preinvoice_page = get_page_by_path( 'price-list-preinvoice' );
 
 			<div class="tornex-footer-map-col">
 				<h4>موقعیت روی نقشه</h4>
-				<div class="tornex-footer-map">
-					<!-- TODO: pin the exact address once confirmed; map is a general-area placeholder and non-interactive until then. -->
-					<iframe src="https://www.google.com/maps?q=%D8%AA%D9%87%D8%B1%D8%A7%D9%86%D8%8C+%D9%84%D8%A7%D9%84%D9%87%E2%80%8C%D8%B2%D8%A7%D8%B1&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="موقعیت تقریبی تورنکس روی نقشه" tabindex="-1"></iframe>
-					<div class="tornex-footer-map-overlay">آدرس دقیق به‌زودی روی نقشه تایید می‌شود</div>
-				</div>
+				<?php echo tornex_map_embed_html( 140, 'tornex-footer-map' ); ?>
 			</div>
 		</div>
 		<div class="tornex-footer-bottom">

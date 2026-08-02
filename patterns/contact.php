@@ -2,7 +2,7 @@
 /**
  * Title: تماس با ما
  * Slug: tornex/contact
- * Description: تیتر و متن مقدمه، اطلاعات تماس از Customizer، فرم تماس و جای‌گیر نقشه
+ * Description: تیتر و متن مقدمه، اطلاعات تماس از Customizer، فرم تماس و نقشه
  * Categories: tornex
  * Viewport Width: 1400
  */
@@ -56,12 +56,10 @@ $tornex_address = get_theme_mod( 'tornex_address' );
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"style":{"border":{"width":"1px","color":"#E7E4E2","radius":"14px"},"spacing":{"padding":{"top":"0px","right":"0px","bottom":"0px","left":"0px"},"margin":{"top":"20px"},"minHeight":"220px"}},"backgroundColor":"bg-soft","layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
-<div class="wp-block-group has-bg-soft-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:14px;min-height:220px;margin-top:20px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
+<!-- wp:group {"style":{"border":{"width":"1px","color":"#E7E4E2","radius":"14px"},"spacing":{"padding":{"top":"0px","right":"0px","bottom":"0px","left":"0px"},"margin":{"top":"20px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="border-color:#E7E4E2;border-width:1px;border-radius:14px;margin-top:20px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px">
 
-<!-- wp:paragraph {"textColor":"gray","fontSize":"small"} -->
-<p class="has-gray-color has-text-color has-small-font-size">[جای‌گیر نقشه — بعد از دریافت آدرس دقیق]</p>
-<!-- /wp:paragraph -->
+<?php echo tornex_map_embed_html( 260 ); ?>
 
 </div>
 <!-- /wp:group -->
