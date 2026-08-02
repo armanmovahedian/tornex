@@ -11,6 +11,8 @@ $tornex_contact_id   = get_theme_mod( 'tornex_contact_page' );
 $tornex_about_url    = $tornex_about_id ? get_permalink( $tornex_about_id ) : '#';
 $tornex_contact_url  = $tornex_contact_id ? get_permalink( $tornex_contact_id ) : '#';
 $tornex_products_url = get_post_type_archive_link( 'product' ) ?: '#';
+$tornex_blog_id      = get_option( 'page_for_posts' );
+$tornex_blog_url     = $tornex_blog_id ? get_permalink( $tornex_blog_id ) : '#';
 ?>
 <footer class="tornex-footer">
 	<div class="tornex-container">
@@ -24,6 +26,7 @@ $tornex_products_url = get_post_type_archive_link( 'product' ) ?: '#';
 				<ul>
 					<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">صفحه اصلی</a></li>
 					<li><a href="<?php echo esc_url( $tornex_products_url ); ?>">محصولات</a></li>
+					<li><a href="<?php echo esc_url( $tornex_blog_url ); ?>">بلاگ</a></li>
 					<li><a href="<?php echo esc_url( $tornex_about_url ); ?>">درباره ما</a></li>
 				</ul>
 			</div>
