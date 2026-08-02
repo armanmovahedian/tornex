@@ -120,3 +120,63 @@
 		} );
 	} );
 })();
+
+// Testimonials: auto-rotating slider (client-side only, no library).
+(function () {
+	'use strict';
+
+	document.addEventListener( 'DOMContentLoaded', function () {
+		var slides = document.querySelectorAll( '.tornex-testi-slide' );
+		var dots = document.querySelectorAll( '.tornex-testi-dot' );
+		var slider = document.querySelector( '.tornex-testi-slider' );
+
+		if ( slides.length < 2 || ! slider ) {
+			return;
+		}
+
+		var current = 0;
+		var timer = null;
+		var prefersReducedMotion = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+
+		function goTo( index ) {
+			current = ( index + slides.length ) % slides.length;
+			slides.forEach( function ( slide, i ) {
+				slide.classList.toggle( 'is-active', i === current );
+			} );
+			dots.forEach( function ( dot, i ) {
+				dot.classList.toggle( 'is-active', i === current );
+			} );
+		}
+
+		function next() {
+			goTo( current + 1 );
+		}
+
+		function startAutoplay() {
+			if ( prefersReducedMotion ) {
+				return;
+			}
+			stopAutoplay();
+			timer = window.setInterval( next, 5500 );
+		}
+
+		function stopAutoplay() {
+			if ( timer ) {
+				window.clearInterval( timer );
+				timer = null;
+			}
+		}
+
+		dots.forEach( function ( dot ) {
+			dot.addEventListener( 'click', function () {
+				goTo( parseInt( dot.getAttribute( 'data-tornex-dot' ), 10 ) || 0 );
+				startAutoplay();
+			} );
+		} );
+
+		slider.addEventListener( 'mouseenter', stopAutoplay );
+		slider.addEventListener( 'mouseleave', startAutoplay );
+
+		startAutoplay();
+	} );
+})();

@@ -2,7 +2,7 @@
 /**
  * Title: نظرات مشتریان
  * Slug: tornex/testimonials
- * Description: سه کارت نظر مشتری
+ * Description: دو ستون — اسلایدر نظرات مشتریان (راست) و گرید لوگوی برندهای همکار (چپ)
  * Categories: tornex
  * Viewport Width: 1400
  */
@@ -24,6 +24,9 @@ $tornex_testimonials = array(
 		'role' => 'فروشگاه زنجیره‌ای نمونه',
 	),
 );
+
+// TODO: replace with real partner/brand logos once the list is provided.
+$tornex_brand_count = 6;
 ?>
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"72px","right":"24px","bottom":"72px","left":"24px"}}},"backgroundColor":"bg-soft","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-bg-soft-background-color has-background" style="padding-top:72px;padding-right:24px;padding-bottom:72px;padding-left:24px">
@@ -36,36 +39,45 @@ $tornex_testimonials = array(
 <h2 class="wp-block-heading has-text-align-center has-x-large-font-size">نظر مشتریان عمده‌ی تورنکس</h2>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"align":"wide","style":{"spacing":{"margin":{"top":"44px"}}}} -->
-<div class="wp-block-columns alignwide" style="margin-top:44px">
-<?php foreach ( $tornex_testimonials as $tornex_testi_index => $testimonial ) : ?>
-<?php $tornex_testi_delay = $tornex_testi_index * 90; ?>
-<!-- wp:column -->
-<div class="wp-block-column">
+<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"44px"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide" style="margin-top:44px">
+<div class="tornex-testi-grid">
 
-<!-- wp:group {"className":"tornex-testi-card tornex-animate","backgroundColor":"white","style":{"border":{"width":"1px","color":"#E7E4E2","radius":"14px"},"spacing":{"padding":{"top":"26px","right":"26px","bottom":"26px","left":"26px"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group tornex-testi-card tornex-animate has-white-background-color has-background" style="border-color:#E7E4E2;border-width:1px;border-radius:14px;padding-top:26px;padding-right:26px;padding-bottom:26px;padding-left:26px;transition-delay:<?php echo (int) $tornex_testi_delay; ?>ms">
+	<div class="tornex-testi-slider">
+		<div class="tornex-testi-slides">
+			<?php foreach ( $tornex_testimonials as $tornex_testi_index => $testimonial ) : ?>
+				<div class="tornex-testi-slide<?php echo 0 === $tornex_testi_index ? ' is-active' : ''; ?>" data-tornex-slide="<?php echo (int) $tornex_testi_index; ?>">
+					<div class="tornex-testi-card">
+						<p class="tornex-testi-text">«<?php echo esc_html( $testimonial['text'] ); ?>»</p>
+						<p class="tornex-testi-name"><?php echo esc_html( $testimonial['name'] ); ?></p>
+						<p class="tornex-testi-role"><?php echo esc_html( $testimonial['role'] ); ?></p>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
 
-<!-- wp:paragraph {"textColor":"gray","fontSize":"small"} -->
-<p class="has-gray-color has-text-color has-small-font-size">«<?php echo esc_html( $testimonial['text'] ); ?>»</p>
-<!-- /wp:paragraph -->
+		<?php if ( count( $tornex_testimonials ) > 1 ) : ?>
+		<div class="tornex-testi-dots">
+			<?php foreach ( $tornex_testimonials as $tornex_testi_index => $testimonial ) : ?>
+				<button type="button" class="tornex-testi-dot<?php echo 0 === $tornex_testi_index ? ' is-active' : ''; ?>" data-tornex-dot="<?php echo (int) $tornex_testi_index; ?>" aria-label="نظر <?php echo esc_attr( tornex_fa_digits( $tornex_testi_index + 1 ) ); ?>"></button>
+			<?php endforeach; ?>
+		</div>
+		<?php endif; ?>
+	</div>
 
-<!-- wp:paragraph {"fontSize":"small","style":{"typography":{"fontWeight":"700"}}} -->
-<p class="has-small-font-size" style="font-weight:700"><?php echo esc_html( $testimonial['name'] ); ?></p>
-<!-- /wp:paragraph -->
+	<div class="tornex-testi-brands">
+		<h3>برندهای همکار تورنکس</h3>
+		<div class="tornex-brand-grid">
+			<?php for ( $tornex_b = 0; $tornex_b < $tornex_brand_count; $tornex_b++ ) : ?>
+				<!-- TODO: replace with real partner brand logo -->
+				<div class="tornex-brand-box" aria-hidden="true"></div>
+			<?php endfor; ?>
+		</div>
+	</div>
 
-<!-- wp:paragraph {"textColor":"gray","fontSize":"small"} -->
-<p class="has-gray-color has-text-color has-small-font-size"><?php echo esc_html( $testimonial['role'] ); ?></p>
-<!-- /wp:paragraph -->
-
+</div>
 </div>
 <!-- /wp:group -->
-
-</div>
-<!-- /wp:column -->
-<?php endforeach; ?>
-</div>
-<!-- /wp:columns -->
 
 </div>
 <!-- /wp:group -->
