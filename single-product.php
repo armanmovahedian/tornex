@@ -21,6 +21,9 @@ while ( have_posts() ) :
 
 	$tornex_contact_page_id = get_theme_mod( 'tornex_contact_page' );
 	$tornex_contact_url     = $tornex_contact_page_id ? get_permalink( $tornex_contact_page_id ) : home_url( '/' );
+
+	$tornex_datasheet     = get_field( 'datasheet' );
+	$tornex_datasheet_url = ! empty( $tornex_datasheet['url'] ) ? $tornex_datasheet['url'] : '';
 	?>
 
 	<div class="tornex-container tornex-product-single">
@@ -66,7 +69,14 @@ while ( have_posts() ) :
 			</tbody>
 		</table>
 
-		<a href="<?php echo esc_url( $tornex_contact_url ); ?>" class="tornex-btn tornex-btn-primary">درخواست استعلام قیمت</a>
+		<div class="tornex-product-actions">
+			<a href="<?php echo esc_url( $tornex_contact_url ); ?>" class="tornex-btn tornex-btn-primary">درخواست استعلام قیمت</a>
+			<?php if ( $tornex_datasheet_url ) : ?>
+				<a href="<?php echo esc_url( $tornex_datasheet_url ); ?>" class="tornex-btn tornex-btn-dark-outline" download>دریافت دیتاشیت</a>
+			<?php else : ?>
+				<span class="tornex-btn tornex-btn-dark-outline tornex-btn-disabled" aria-disabled="true">دیتاشیت — به‌زودی</span>
+			<?php endif; ?>
+		</div>
 
 		<?php
 		$tornex_related_args = array(

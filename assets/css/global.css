@@ -417,6 +417,17 @@ mark {
 	font-weight: 700;
 }
 
+.tornex-product-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+}
+.tornex-btn-disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
 .tornex-related-products {
 	margin-top: 56px;
 }
