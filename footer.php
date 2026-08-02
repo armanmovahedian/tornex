@@ -21,6 +21,7 @@ $tornex_wholesale_page  = get_page_by_path( 'wholesale-purchase' );
 $tornex_reseller_page   = get_page_by_path( 'reseller-purchase' );
 $tornex_corporate_page  = get_page_by_path( 'corporate-purchase' );
 $tornex_preinvoice_page = get_page_by_path( 'price-list-preinvoice' );
+$tornex_price_list_page = get_page_by_path( 'price-list' );
 ?>
 <footer class="tornex-footer">
 	<div class="tornex-container">
@@ -66,7 +67,8 @@ $tornex_preinvoice_page = get_page_by_path( 'price-list-preinvoice' );
 					<?php if ( $tornex_wholesale_page ) : ?><li><a href="<?php echo esc_url( get_permalink( $tornex_wholesale_page ) ); ?>">خرید عمده</a></li><?php endif; ?>
 					<?php if ( $tornex_reseller_page ) : ?><li><a href="<?php echo esc_url( get_permalink( $tornex_reseller_page ) ); ?>">خرید همکار / نمایندگی</a></li><?php endif; ?>
 					<?php if ( $tornex_corporate_page ) : ?><li><a href="<?php echo esc_url( get_permalink( $tornex_corporate_page ) ); ?>">خرید سازمانی</a></li><?php endif; ?>
-					<?php if ( $tornex_preinvoice_page ) : ?><li><a href="<?php echo esc_url( get_permalink( $tornex_preinvoice_page ) ); ?>">لیست قیمت و پیش‌فاکتور</a></li><?php endif; ?>
+					<?php if ( $tornex_price_list_page ) : ?><li><a href="<?php echo esc_url( get_permalink( $tornex_price_list_page ) ); ?>">لیست قیمت</a></li><?php endif; ?>
+					<?php if ( $tornex_preinvoice_page ) : ?><li><a href="<?php echo esc_url( get_permalink( $tornex_preinvoice_page ) ); ?>">صدور پیش‌فاکتور</a></li><?php endif; ?>
 				</ul>
 			</div>
 

@@ -30,7 +30,7 @@ function tornex_lead_form_types() {
 			'email_subject' => 'درخواست خرید سازمانی جدید - تورنکس',
 		),
 		'preinvoice' => array(
-			'title'         => 'درخواست لیست قیمت و صدور پیش‌فاکتور',
+			'title'         => 'درخواست صدور پیش‌فاکتور',
 			'intro'         => 'فرم را تکمیل و ارسال نمایید تا در اسرع وقت با بررسی لیست ارسالی، پیش‌فاکتور صادر شده برای شما ارسال شود.',
 			'company_label' => 'نام شرکت (در صورت وجود)',
 			'email_subject' => 'درخواست لیست قیمت / پیش‌فاکتور جدید - تورنکس',
@@ -159,11 +159,46 @@ function tornex_render_standard_lead_form( $cfg, $type ) {
 function tornex_render_preinvoice_form( $cfg, $type ) {
 	list( $captcha_a, $captcha_b, $captcha_token ) = tornex_generate_captcha();
 
-	$phone     = get_theme_mod( 'tornex_phone' );
-	$email     = get_theme_mod( 'tornex_email' );
-	$telegram  = get_theme_mod( 'tornex_telegram' );
-	$whatsapp  = get_theme_mod( 'tornex_whatsapp' );
-	$instagram = get_theme_mod( 'tornex_instagram' );
+	$phone   = get_theme_mod( 'tornex_phone' );
+	$email   = get_theme_mod( 'tornex_email' );
+	$bale    = get_theme_mod( 'tornex_bale' );
+	$rubika  = get_theme_mod( 'tornex_rubika' );
+	$whatsapp = get_theme_mod( 'tornex_whatsapp' );
+	$telegram = get_theme_mod( 'tornex_telegram' );
+
+	// Order fixed per brand request: بله، روبیکا، واتساپ، تلگرام، ایمیل.
+	$tornex_preinvoice_messengers = array(
+		array(
+			'url'   => $bale,
+			'label' => 'بله',
+			'color' => '#0AA1DD',
+			'icon'  => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8Z"/></svg>',
+		),
+		array(
+			'url'   => $rubika,
+			'label' => 'روبیکا',
+			'color' => '#F97316',
+			'icon'  => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8A2.5 2.5 0 0 1 17.5 16H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5v-8Z"/><path d="M9.5 7.5 14 10l-4.5 2.5v-5Z" fill="white" stroke="none"/></svg>',
+		),
+		array(
+			'url'   => $whatsapp,
+			'label' => 'واتس‌اپ',
+			'color' => '#25D366',
+			'icon'  => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 1 1-4.1-7.3L21 3l-1.2 4A8.46 8.46 0 0 1 21 11.5Z"/><path d="M8.5 9.5c.3 2.8 2.7 5.2 5.5 5.5"/></svg>',
+		),
+		array(
+			'url'   => $telegram,
+			'label' => 'تلگرام',
+			'color' => '#26A5E4',
+			'icon'  => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M22 2 2 10l7 3 2 7 4-5 6 3Z"/><path d="M9 13l9-8"/></svg>',
+		),
+		array(
+			'url'   => $email ? 'mailto:' . $email : '',
+			'label' => 'ایمیل',
+			'color' => '#5B5B5B',
+			'icon'  => '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><rect x="3.5" y="5" width="17" height="14" rx="2.5"/><path d="M4.5 6.5 12 12.5l7.5-6"/></svg>',
+		),
+	);
 
 	ob_start();
 	?>
@@ -171,31 +206,15 @@ function tornex_render_preinvoice_form( $cfg, $type ) {
 		<div class="tornex-preinvoice-icons">
 			<h3>ارسال سریع از طریق پیام‌رسان</h3>
 			<div class="tornex-preinvoice-icon-grid">
-				<?php if ( $whatsapp ) : ?>
-				<a href="<?php echo esc_url( $whatsapp ); ?>" class="tornex-preinvoice-icon" target="_blank" rel="noopener">
-					<span class="tornex-preinvoice-icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 1 1-4.1-7.3L21 3l-1.2 4A8.46 8.46 0 0 1 21 11.5Z"/><path d="M8.5 9.5c.3 2.8 2.7 5.2 5.5 5.5"/></svg></span>
-					<span>واتس‌اپ</span>
-				</a>
-				<?php endif; ?>
-				<?php if ( $telegram ) : ?>
-				<a href="<?php echo esc_url( $telegram ); ?>" class="tornex-preinvoice-icon" target="_blank" rel="noopener">
-					<span class="tornex-preinvoice-icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 2 2 10l7 3 2 7 4-5 6 3Z"/><path d="M9 13l9-8"/></svg></span>
-					<span>تلگرام</span>
-				</a>
-				<?php endif; ?>
-				<?php if ( $instagram ) : ?>
-				<a href="<?php echo esc_url( $instagram ); ?>" class="tornex-preinvoice-icon" target="_blank" rel="noopener">
-					<span class="tornex-preinvoice-icon-circle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg></span>
-					<span>اینستاگرام</span>
-				</a>
-				<?php endif; ?>
+				<?php foreach ( $tornex_preinvoice_messengers as $tornex_msg ) : ?>
+					<?php if ( $tornex_msg['url'] ) : ?>
+					<a href="<?php echo esc_url( $tornex_msg['url'] ); ?>" class="tornex-preinvoice-icon" target="_blank" rel="noopener">
+						<span class="tornex-preinvoice-icon-circle" style="background:<?php echo esc_attr( $tornex_msg['color'] ); ?>"><?php echo $tornex_msg['icon']; ?></span>
+						<span><?php echo esc_html( $tornex_msg['label'] ); ?></span>
+					</a>
+					<?php endif; ?>
+				<?php endforeach; ?>
 			</div>
-			<?php if ( $email ) : ?>
-			<div class="tornex-preinvoice-email">
-				<span>ارسال از طریق ایمیل</span>
-				<a href="mailto:<?php echo esc_attr( $email ); ?>"><?php echo esc_html( $email ); ?></a>
-			</div>
-			<?php endif; ?>
 			<?php if ( $phone ) : ?>
 			<div class="tornex-preinvoice-email">
 				<span>تماس تلفنی</span>

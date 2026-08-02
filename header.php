@@ -31,12 +31,15 @@
 		$tornex_contact_page_id  = get_theme_mod( 'tornex_contact_page' );
 		$tornex_contact_page_url = $tornex_contact_page_id ? get_permalink( $tornex_contact_page_id ) : home_url( '/' );
 
-		$tornex_pricelist_page_id = get_theme_mod( 'tornex_pricelist_page' );
-		$tornex_pricelist_page_url = $tornex_pricelist_page_id ? get_permalink( $tornex_pricelist_page_id ) : home_url( '/' );
+		$tornex_preinvoice_page_id  = get_theme_mod( 'tornex_preinvoice_page' );
+		$tornex_preinvoice_page_url = $tornex_preinvoice_page_id ? get_permalink( $tornex_preinvoice_page_id ) : home_url( '/' );
+
+		$tornex_price_list_page_id  = get_theme_mod( 'tornex_price_list_page' );
+		$tornex_price_list_page_url = $tornex_price_list_page_id ? get_permalink( $tornex_price_list_page_id ) : home_url( '/' );
 		?>
 		<div class="tornex-nav-actions">
-			<a href="<?php echo esc_url( add_query_arg( 'type', 'price-list', $tornex_pricelist_page_url ) ); ?>" class="tornex-btn tornex-btn-outline tornex-nav-btn-sm">لیست قیمت</a>
-			<a href="<?php echo esc_url( add_query_arg( 'type', 'preinvoice', $tornex_pricelist_page_url ) ); ?>" class="tornex-btn tornex-btn-outline tornex-nav-btn-sm">صدور پیش‌فاکتور</a>
+			<a href="<?php echo esc_url( $tornex_price_list_page_url ); ?>" class="tornex-btn tornex-btn-outline tornex-nav-btn-sm">لیست قیمت</a>
+			<a href="<?php echo esc_url( $tornex_preinvoice_page_url ); ?>" class="tornex-btn tornex-btn-outline tornex-nav-btn-sm">صدور پیش‌فاکتور</a>
 			<a href="<?php echo esc_url( $tornex_contact_page_url ); ?>" class="tornex-btn tornex-btn-primary tornex-nav-cta">استعلام قیمت</a>
 		</div>
 	</div>
