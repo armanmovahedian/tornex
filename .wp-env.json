@@ -10,6 +10,6 @@
 		"WP_DEBUG_DISPLAY": false
 	},
 	"lifecycleScripts": {
-		"afterStart": "wp-env run cli wp theme activate tornex && wp-env run cli wp plugin activate advanced-custom-fields"
+		"afterStart": "wp-env run cli wp theme activate tornex && wp-env run cli wp plugin activate advanced-custom-fields && wp-env run cli wp rewrite structure /%postname%/ --hard"
 	}
 }
