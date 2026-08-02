@@ -2,7 +2,8 @@
 	"core": null,
 	"themes": ["."],
 	"plugins": [
-		"https://downloads.wordpress.org/plugin/advanced-custom-fields.zip"
+		"https://downloads.wordpress.org/plugin/advanced-custom-fields.zip",
+		"https://downloads.wordpress.org/plugin/wordpress-seo.zip"
 	],
 	"config": {
 		"WP_DEBUG": true,
@@ -10,6 +11,6 @@
 		"WP_DEBUG_DISPLAY": false
 	},
 	"lifecycleScripts": {
-		"afterStart": "wp-env run cli wp theme activate tornex && wp-env run cli wp plugin activate advanced-custom-fields && wp-env run cli wp rewrite structure /%postname%/ --hard"
+		"afterStart": "wp-env run cli wp theme activate tornex && wp-env run cli wp plugin activate advanced-custom-fields wordpress-seo && wp-env run cli wp rewrite structure /%postname%/ --hard"
 	}
 }
