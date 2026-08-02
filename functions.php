@@ -304,3 +304,4 @@ require get_stylesheet_directory() . '/inc/customizer.php';
 require get_stylesheet_directory() . '/inc/contact-form.php';
 require get_stylesheet_directory() . '/inc/product-cpt.php';
 require get_stylesheet_directory() . '/inc/lead-forms.php';
+require get_stylesheet_directory() . '/inc/product-price-admin.php';
