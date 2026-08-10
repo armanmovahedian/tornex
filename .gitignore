@@ -20,3 +20,10 @@ Thumbs.db
 # Env/secrets
 .env
 .env.local
+
+# Deploy artifacts / one-off scripts (not part of theme source)
+/tornex-prod.sql
+/tornex-theme.zip
+/scripts/tornex-setup.php
+/scripts/tornex-verify.php
+/scripts/tornex-cleanup.php

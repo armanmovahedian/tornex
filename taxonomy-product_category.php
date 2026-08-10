@@ -43,6 +43,7 @@ $tornex_products_url = get_post_type_archive_link( 'product' ) ?: home_url( '/' 
 				the_post();
 				?>
 				<a href="<?php the_permalink(); ?>" class="tornex-related-card">
+					<?php echo tornex_favorite_button_html( get_the_ID() ); ?>
 					<?php if ( has_post_thumbnail() ) : ?>
 						<?php the_post_thumbnail( 'medium' ); ?>
 					<?php else : ?>

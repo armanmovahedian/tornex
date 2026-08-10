@@ -22,7 +22,10 @@ while ( have_posts() ) :
 
 		<div class="tornex-blog-header">
 			<h1><?php the_title(); ?></h1>
-			<p class="tornex-blog-meta"><?php echo esc_html( get_the_date() ); ?></p>
+			<div class="tornex-blog-meta-row">
+				<p class="tornex-blog-meta"><?php echo esc_html( get_the_date() ); ?></p>
+				<?php echo tornex_save_post_button_html( get_the_ID() ); ?>
+			</div>
 		</div>
 
 		<div class="tornex-blog-content">

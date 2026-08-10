@@ -42,6 +42,7 @@ while ( $tornex_popular_query->have_posts() ) :
 	$tornex_popular_index++;
 	?>
 	<a href="<?php the_permalink(); ?>" class="tornex-popular-card tornex-animate" style="transition-delay:<?php echo (int) $tornex_popular_delay; ?>ms">
+		<?php echo tornex_favorite_button_html( get_the_ID() ); ?>
 		<div class="tornex-popular-photo">
 			<?php if ( has_post_thumbnail() ) : ?>
 				<?php the_post_thumbnail( 'medium' ); ?>

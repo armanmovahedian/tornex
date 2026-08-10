@@ -19,6 +19,7 @@ get_header();
 				$tornex_archive_top_cat = tornex_top_level_category( $tornex_archive_term );
 				?>
 				<a href="<?php the_permalink(); ?>" class="tornex-related-card">
+					<?php echo tornex_favorite_button_html( get_the_ID() ); ?>
 					<?php if ( has_post_thumbnail() ) : ?>
 						<?php the_post_thumbnail( 'medium' ); ?>
 					<?php else : ?>

@@ -93,9 +93,28 @@ function tornex_enqueue_assets() {
 		true
 	);
 	wp_localize_script( 'tornex-product-search', 'tornexAjax', array(
-		'url'   => admin_url( 'admin-ajax.php' ),
-		'nonce' => wp_create_nonce( 'tornex_product_search' ),
+		'url'            => admin_url( 'admin-ajax.php' ),
+		'nonce'          => wp_create_nonce( 'tornex_product_search' ),
+		'dashboardNonce' => wp_create_nonce( 'tornex_dashboard' ),
+		'loggedIn'       => is_user_logged_in(),
+		'accountUrl'     => home_url( '/account/' ),
 	) );
+
+	wp_enqueue_script(
+		'tornex-order-wizard',
+		get_stylesheet_directory_uri() . '/assets/js/order-wizard.js',
+		array( 'tornex-product-search' ),
+		filemtime( get_stylesheet_directory() . '/assets/js/order-wizard.js' ),
+		true
+	);
+
+	wp_enqueue_script(
+		'tornex-dashboard',
+		get_stylesheet_directory_uri() . '/assets/js/dashboard.js',
+		array( 'tornex-product-search' ),
+		filemtime( get_stylesheet_directory() . '/assets/js/dashboard.js' ),
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'tornex_enqueue_assets' );
 
@@ -305,3 +324,5 @@ require get_stylesheet_directory() . '/inc/contact-form.php';
 require get_stylesheet_directory() . '/inc/product-cpt.php';
 require get_stylesheet_directory() . '/inc/lead-forms.php';
 require get_stylesheet_directory() . '/inc/product-price-admin.php';
+require get_stylesheet_directory() . '/inc/quote-requests.php';
+require get_stylesheet_directory() . '/inc/account.php';

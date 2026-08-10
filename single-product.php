@@ -77,6 +77,7 @@ while ( have_posts() ) :
 			<?php else : ?>
 				<span class="tornex-btn tornex-btn-dark-outline tornex-btn-disabled" aria-disabled="true">دیتاشیت — به‌زودی</span>
 			<?php endif; ?>
+			<?php echo tornex_favorite_button_html( get_the_ID() ); ?>
 		</div>
 
 		<?php
@@ -111,6 +112,7 @@ while ( have_posts() ) :
 						$tornex_related_top_cat = tornex_top_level_category( $tornex_related_term );
 						?>
 						<a href="<?php the_permalink(); ?>" class="tornex-related-card">
+							<?php echo tornex_favorite_button_html( get_the_ID() ); ?>
 							<?php if ( has_post_thumbnail() ) : ?>
 								<?php the_post_thumbnail( 'medium' ); ?>
 							<?php else : ?>
