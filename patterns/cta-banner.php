@@ -10,8 +10,10 @@
 $tornex_ctabanner_contact_id  = get_theme_mod( 'tornex_contact_page' );
 $tornex_ctabanner_contact_url = $tornex_ctabanner_contact_id ? get_permalink( $tornex_ctabanner_contact_id ) : home_url( '/' );
 ?>
-<!-- wp:group {"align":"full","textColor":"white","backgroundColor":"brand-red","style":{"spacing":{"padding":{"top":"52px","right":"24px","bottom":"52px","left":"24px"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-white-color has-brand-red-background-color has-text-color has-background" style="padding-top:52px;padding-right:24px;padding-bottom:52px;padding-left:24px">
+<!-- wp:group {"align":"full","textColor":"white","backgroundColor":"brand-red","className":"tornex-ctabanner","style":{"spacing":{"padding":{"top":"52px","right":"24px","bottom":"52px","left":"24px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-white-color has-brand-red-background-color has-text-color has-background tornex-ctabanner" style="padding-top:52px;padding-right:24px;padding-bottom:52px;padding-left:24px">
+
+<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/assets/logo/logo-icon-white.svg' ); ?>" alt="" class="tornex-ctabanner-icon" aria-hidden="true">
 
 <!-- wp:heading {"textAlign":"center","level":2,"fontSize":"large"} -->
 <h2 class="wp-block-heading has-text-align-center has-large-font-size">نیاز به استعلام قیمت عمده دارید؟</h2>

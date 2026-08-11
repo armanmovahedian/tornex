@@ -137,6 +137,8 @@
 		var current = 0;
 		var timer = null;
 		var prefersReducedMotion = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+		var prevBtn = document.querySelector( '.tornex-testi-arrow--prev' );
+		var nextBtn = document.querySelector( '.tornex-testi-arrow--next' );
 
 		function goTo( index ) {
 			current = ( index + slides.length ) % slides.length;
@@ -150,6 +152,10 @@
 
 		function next() {
 			goTo( current + 1 );
+		}
+
+		function prev() {
+			goTo( current - 1 );
 		}
 
 		function startAutoplay() {
@@ -174,8 +180,43 @@
 			} );
 		} );
 
+		if ( prevBtn ) {
+			prevBtn.addEventListener( 'click', function () {
+				prev();
+				startAutoplay();
+			} );
+		}
+		if ( nextBtn ) {
+			nextBtn.addEventListener( 'click', function () {
+				next();
+				startAutoplay();
+			} );
+		}
+
 		slider.addEventListener( 'mouseenter', stopAutoplay );
 		slider.addEventListener( 'mouseleave', startAutoplay );
+
+		// Touch swipe (mobile): drag left -> next, drag right -> previous.
+		var touchStartX = null;
+
+		slider.addEventListener( 'touchstart', function ( e ) {
+			touchStartX = e.touches[ 0 ].clientX;
+			stopAutoplay();
+		}, { passive: true } );
+
+		slider.addEventListener( 'touchend', function ( e ) {
+			if ( null === touchStartX ) {
+				return;
+			}
+			var deltaX = e.changedTouches[ 0 ].clientX - touchStartX;
+			if ( deltaX < -40 ) {
+				next();
+			} else if ( deltaX > 40 ) {
+				prev();
+			}
+			touchStartX = null;
+			startAutoplay();
+		} );
 
 		startAutoplay();
 	} );
