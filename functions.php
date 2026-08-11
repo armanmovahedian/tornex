@@ -115,6 +115,14 @@ function tornex_enqueue_assets() {
 		filemtime( get_stylesheet_directory() . '/assets/js/dashboard.js' ),
 		true
 	);
+
+	wp_enqueue_script(
+		'tornex-mobile-nav',
+		get_stylesheet_directory_uri() . '/assets/js/mobile-nav.js',
+		array(),
+		filemtime( get_stylesheet_directory() . '/assets/js/mobile-nav.js' ),
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'tornex_enqueue_assets' );
 

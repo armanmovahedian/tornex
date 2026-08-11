@@ -108,6 +108,19 @@ mark {
 	border-top: none;
 }
 
+.tornex-header-mobile {
+	display: none;
+}
+
+@media (max-width: 1023px) {
+	.tornex-header-desktop {
+		display: none;
+	}
+	.tornex-header-mobile {
+		display: block;
+	}
+}
+
 /* Row 1: utility bar */
 .tornex-top-bar {
 	display: flex;
@@ -221,22 +234,6 @@ mark {
 }
 .tornex-header-cta:hover {
 	background: var(--red-dark);
-}
-
-@media (max-width: 900px) {
-	.tornex-brand-nav-list {
-		display: none;
-	}
-}
-@media (max-width: 640px) {
-	.tornex-top-links a span,
-	.tornex-top-support span {
-		display: none;
-	}
-	.tornex-header-search {
-		order: 10;
-		flex-basis: 100%;
-	}
 }
 
 /* Row 3: category mega-menu, rounded capsule pills */
@@ -370,6 +367,246 @@ mark {
 }
 .tornex-megapanel-viewall:hover {
 	color: var(--red);
+}
+
+/* ================= Mobile header (<1024px) ================= */
+
+.tornex-mobile-bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 56px;
+	padding: 0 16px;
+}
+
+.tornex-mobile-hamburger,
+.tornex-mobile-search-toggle,
+.tornex-mobile-account {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	border: none;
+	background: none;
+	color: var(--white);
+	border-radius: 8px;
+	flex-shrink: 0;
+}
+.tornex-mobile-hamburger:active,
+.tornex-mobile-search-toggle:active,
+.tornex-mobile-account:active {
+	background: rgba(255, 255, 255, 0.08);
+}
+.tornex-mobile-hamburger .icon-close {
+	color: var(--red);
+}
+
+.site-logo--mobile {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.site-logo--mobile img {
+	height: 20px;
+	width: auto;
+}
+
+.tornex-mobile-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	flex-shrink: 0;
+}
+
+/* Mobile search bar: slides down under the bar */
+.tornex-mobile-search-bar {
+	overflow: hidden;
+	max-height: 0;
+	transition: max-height 0.2s ease-out;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.tornex-mobile-search-bar.is-open {
+	max-height: 90px;
+}
+.tornex-mobile-search-bar .tornex-header-search {
+	padding: 12px 16px;
+}
+.tornex-mobile-search-bar .tornex-order-search-box {
+	position: relative;
+}
+.tornex-mobile-search-close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	height: 26px;
+	border: none;
+	background: none;
+	color: #a8a6a5;
+	flex-shrink: 0;
+}
+
+/* Drawer overlay + panel */
+.tornex-drawer-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 90;
+	opacity: 0;
+	transition: opacity 0.25s ease-out;
+}
+.tornex-drawer-overlay.is-open {
+	opacity: 1;
+}
+
+.tornex-drawer {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 85%;
+	max-width: 320px;
+	background: var(--ink);
+	z-index: 91;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	transform: translateX(100%);
+	transition: transform 0.25s ease-out;
+	padding: 20px 0 32px;
+}
+.tornex-drawer.is-open {
+	transform: translateX(0);
+}
+
+.tornex-drawer-user {
+	padding: 0 20px 18px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	margin-bottom: 12px;
+}
+.tornex-drawer-user-info {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--white);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.tornex-drawer-user-avatar {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.08);
+	color: #d8d6d5;
+	flex-shrink: 0;
+}
+.tornex-drawer-user-link {
+	display: inline-block;
+	font-size: 13px;
+	color: var(--red);
+	font-weight: 600;
+}
+.tornex-drawer-login-btn {
+	display: block;
+	text-align: center;
+	width: 100%;
+	padding: 12px;
+}
+
+.tornex-drawer-quicklinks,
+.tornex-drawer-nav {
+	display: flex;
+	flex-direction: column;
+}
+.tornex-drawer-quicklinks a,
+.tornex-drawer-nav a {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	height: 40px;
+	padding: 0 20px;
+	font-size: 14.5px;
+	color: #d8d6d5;
+}
+.tornex-drawer-quicklinks a:active,
+.tornex-drawer-nav a:active {
+	background: rgba(255, 255, 255, 0.05);
+}
+.tornex-drawer-quicklinks svg {
+	flex-shrink: 0;
+	opacity: 0.8;
+}
+
+.tornex-drawer-divider {
+	border: none;
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	margin: 8px 0;
+}
+
+.tornex-drawer-accordion-item {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.tornex-drawer-accordion-trigger {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	height: 46px;
+	padding: 0 20px;
+	border: none;
+	background: none;
+	color: var(--white);
+	font-family: inherit;
+	font-size: 14.5px;
+	font-weight: 600;
+	text-align: right;
+}
+.tornex-drawer-accordion-trigger svg,
+.tornex-drawer-accordion-trigger img {
+	flex-shrink: 0;
+}
+.tornex-drawer-accordion-trigger span {
+	flex: 1;
+}
+.tornex-drawer-accordion-chevron {
+	width: 8px;
+	height: 8px;
+	border-right: 2px solid #a8a6a5;
+	border-bottom: 2px solid #a8a6a5;
+	transform: rotate(135deg);
+	transition: transform 0.18s ease-in-out;
+	flex-shrink: 0;
+}
+.tornex-drawer-accordion-trigger[aria-expanded="true"] .tornex-drawer-accordion-chevron {
+	transform: rotate(225deg);
+}
+.tornex-drawer-accordion-panel {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.18s ease-in-out;
+}
+.tornex-drawer-accordion-panel-inner {
+	display: flex;
+	flex-direction: column;
+	padding: 4px 20px 14px 20px;
+}
+.tornex-drawer-accordion-panel-inner a {
+	padding: 8px 12px;
+	font-size: 13.5px;
+	color: #a8a6a5;
+}
+.tornex-drawer-accordion-panel-inner a:active {
+	color: var(--white);
+}
+.tornex-drawer-viewall {
+	color: var(--red) !important;
+	font-weight: 600;
+	margin-top: 4px;
 }
 
 @media (max-width: 900px) {
