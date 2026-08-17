@@ -27,3 +27,7 @@ Thumbs.db
 /scripts/tornex-setup.php
 /scripts/tornex-verify.php
 /scripts/tornex-cleanup.php
+/scripts/tornex-import.php
+
+# Barghsan product import — scraped data, not theme source
+/data/
