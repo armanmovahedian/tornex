@@ -9,23 +9,30 @@
 
 $tornex_categories = array(
 	array(
-		'name'  => 'فیبر نوری',
-		'image' => 'category-fiber.jpg',
+		'name'     => 'فیبر نوری',
+		'image'    => 'category-fiber-2.png',
+		'size'     => '145%',
+		'position' => 'right center',
 	),
 	array(
-		'name'  => 'تجهیزات شبکه',
-		'image' => 'category-network.jpg',
+		'name'     => 'تجهیزات شبکه',
+		'image'    => 'category-network-2.webp',
+		'size'     => '90%',
+		'position' => 'center',
 	),
 	array(
-		'name'  => 'سیم و کابل خراسان افشارنژاد',
-		'image' => 'category-cable.jpg',
+		'name'     => 'سیم و کابل خراسان افشارنژاد',
+		'image'    => 'category-cable-2.jpg',
+		'size'     => '90%',
+		'position' => 'center',
 	),
 	array(
-		'name'  => 'سایر تجهیزات کابل',
-		'image' => 'category-other.jpg',
+		'name'     => 'اکسسوری‌های فیبر نوری',
+		'image'    => 'category-fiber-accessories.jpg',
+		'size'     => '110%',
+		'position' => 'center top -70px',
 	),
 );
-// TODO: replace with real category photos once available.
 ?>
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"72px","right":"24px","bottom":"72px","left":"24px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-top:72px;padding-right:24px;padding-bottom:72px;padding-left:24px">
@@ -43,12 +50,14 @@ $tornex_categories = array(
 <?php foreach ( $tornex_categories as $tornex_cat_index => $category ) : ?>
 <?php $tornex_swatch_class = 'tornex-cat-' . ( ( $tornex_cat_index % 4 ) + 1 ); ?>
 <?php $tornex_cat_delay = $tornex_cat_index * 90; ?>
-<?php $tornex_cat_image = get_stylesheet_directory_uri() . '/assets/img/' . $category['image']; ?>
+<?php $tornex_cat_image    = get_stylesheet_directory_uri() . '/assets/img/' . $category['image']; ?>
+<?php $tornex_cat_size     = isset( $category['size'] ) ? $category['size'] : 'cover'; ?>
+<?php $tornex_cat_position = isset( $category['position'] ) ? $category['position'] : 'center'; ?>
 <!-- wp:column -->
 <div class="wp-block-column">
 
 <!-- wp:group {"textColor":"white","className":"tornex-cat-card tornex-animate <?php echo esc_attr( $tornex_swatch_class ); ?>","style":{"border":{"radius":"14px"},"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"},"blockGap":"0","minHeight":"180px"}},"layout":{"type":"flex","orientation":"vertical","verticalAlignment":"bottom"}} -->
-<div class="wp-block-group tornex-cat-card tornex-animate <?php echo esc_attr( $tornex_swatch_class ); ?> has-white-color has-text-color" style="border-radius:14px;min-height:180px;padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;transition-delay:<?php echo (int) $tornex_cat_delay; ?>ms;background-image:url('<?php echo esc_url( $tornex_cat_image ); ?>');background-size:cover;background-position:center">
+<div class="wp-block-group tornex-cat-card tornex-animate <?php echo esc_attr( $tornex_swatch_class ); ?> has-white-color has-text-color" style="border-radius:14px;min-height:180px;padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px;transition-delay:<?php echo (int) $tornex_cat_delay; ?>ms;background-image:url('<?php echo esc_url( $tornex_cat_image ); ?>');background-size:<?php echo esc_attr( $tornex_cat_size ); ?>;background-position:<?php echo esc_attr( $tornex_cat_position ); ?>;background-repeat:no-repeat">
 <!-- wp:paragraph {"style":{"typography":{"fontWeight":"700"}}} -->
 <p style="font-weight:700"><?php echo esc_html( $category['name'] ); ?></p>
 <!-- /wp:paragraph -->

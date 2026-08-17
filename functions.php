@@ -25,7 +25,6 @@ function tornex_setup() {
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'editor-styles' );
 	add_editor_style( array(
-		'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap',
 		'assets/css/global.css',
 	) );
 
@@ -56,13 +55,6 @@ function tornex_remove_core_default_palette( $theme_json ) {
 add_filter( 'wp_theme_json_data_default', 'tornex_remove_core_default_palette' );
 
 function tornex_enqueue_assets() {
-	wp_enqueue_style(
-		'tornex-vazirmatn',
-		'https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap',
-		array(),
-		null
-	);
-
 	wp_enqueue_style(
 		'tornex-global',
 		get_stylesheet_directory_uri() . '/assets/css/global.css',

@@ -1,3 +1,11 @@
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Variable.woff2') format('woff2-variations'), url('../fonts/Vazirmatn-Variable.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 :root {
 	--red: #B5121B;
 	--red-dark: #8A0D15;
@@ -13,6 +21,14 @@
 
 * {
 	box-sizing: border-box;
+}
+
+input,
+button,
+select,
+textarea,
+optgroup {
+	font-family: inherit;
 }
 
 html {
@@ -241,16 +257,9 @@ mark {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	overflow-x: auto;
-	overflow-y: hidden;
-	scrollbar-width: none;
-	-ms-overflow-style: none;
+	flex-wrap: wrap;
 	padding-top: 12px;
 	padding-bottom: 12px;
-}
-.tornex-megabar-row::-webkit-scrollbar {
-	display: none;
-	height: 0;
 }
 
 .tornex-megabar-list {
