@@ -213,8 +213,24 @@ function tornex_category_icon_html( $term_id ) {
 }
 
 /**
+ * Direct child terms of a product_category term, ordered by term_id.
+ */
+function tornex_get_category_children( $parent_id ) {
+	$children = get_terms( array(
+		'taxonomy'   => 'product_category',
+		'parent'     => $parent_id,
+		'hide_empty' => false,
+		'orderby'    => 'term_id',
+	) );
+	return is_wp_error( $children ) ? array() : $children;
+}
+
+/**
  * Mega-menu data: each top-level product_category term with its child terms,
- * built straight from the real taxonomy -- no hardcoded category list.
+ * built straight from the real taxonomy -- no hardcoded category list. A
+ * child that itself has children (e.g. a brand node under "سیم و کابل" with
+ * type sub-categories under it) carries its own 'children' array too, so the
+ * header template can render it as a grouped section instead of a flat link.
  */
 function tornex_get_megamenu_data() {
 	$parents = get_terms( array(
@@ -231,16 +247,19 @@ function tornex_get_megamenu_data() {
 	$data = array();
 
 	foreach ( $parents as $parent ) {
-		$children = get_terms( array(
-			'taxonomy'   => 'product_category',
-			'parent'     => $parent->term_id,
-			'hide_empty' => false,
-			'orderby'    => 'term_id',
-		) );
+		$children = tornex_get_category_children( $parent->term_id );
+
+		$children_data = array();
+		foreach ( $children as $child ) {
+			$children_data[] = array(
+				'term'     => $child,
+				'children' => tornex_get_category_children( $child->term_id ),
+			);
+		}
 
 		$data[] = array(
 			'term'     => $parent,
-			'children' => is_wp_error( $children ) ? array() : $children,
+			'children' => $children_data,
 		);
 	}
 

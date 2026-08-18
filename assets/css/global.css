@@ -378,6 +378,47 @@ mark {
 	color: var(--red);
 }
 
+/* Grouped panel variant: brand columns, each with its own type sub-list
+   (used by categories whose children have children of their own, e.g. the
+   brand nodes under "سیم و کابل"). */
+.tornex-megapanel--grouped {
+	width: min(880px, 92vw);
+}
+.tornex-megapanel-groups {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 18px 24px;
+}
+.tornex-megapanel-group-title {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px;
+	border-radius: 8px;
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--ink);
+	margin-bottom: 4px;
+}
+.tornex-megapanel-group-title:hover {
+	color: var(--red);
+}
+.tornex-megapanel-group-list {
+	display: flex;
+	flex-direction: column;
+}
+.tornex-megapanel-group-list a {
+	padding: 6px 6px 6px 10px;
+	border-radius: 6px;
+	font-size: 13px;
+	color: var(--gray);
+	transition: background-color 0.15s, color 0.15s;
+}
+.tornex-megapanel-group-list a:hover {
+	background: var(--bg-soft);
+	color: var(--red);
+}
+
 /* ================= Mobile header (<1024px) ================= */
 
 .tornex-mobile-bar {
@@ -616,6 +657,36 @@ mark {
 	color: var(--red) !important;
 	font-weight: 600;
 	margin-top: 4px;
+}
+
+/* Brand groups nested inside a drawer accordion panel (children that
+   themselves have children, e.g. the brand nodes under "سیم و کابل"). Shown
+   flat/always-expanded -- no nested toggle, to avoid fighting the parent
+   panel's max-height animation. */
+.tornex-drawer-group {
+	margin: 6px 0;
+}
+.tornex-drawer-group-title {
+	display: block;
+	padding: 8px 12px 4px;
+	font-size: 13.5px;
+	font-weight: 700;
+	color: var(--white) !important;
+}
+.tornex-drawer-group-list {
+	display: flex;
+	flex-direction: column;
+	padding-right: 10px;
+	border-right: 1px solid rgba(255, 255, 255, 0.1);
+	margin-right: 12px;
+}
+.tornex-drawer-group-list a {
+	padding: 6px 12px;
+	font-size: 13px;
+	color: #a8a6a5;
+}
+.tornex-drawer-group-list a:active {
+	color: var(--white);
 }
 
 @media (max-width: 900px) {

@@ -112,13 +112,40 @@
 							</a>
 
 							<?php if ( $tornex_mm_children ) : ?>
-							<div class="tornex-megapanel">
-								<div class="tornex-megapanel-grid">
-									<?php foreach ( $tornex_mm_children as $tornex_mm_child ) : ?>
-										<a href="<?php echo esc_url( get_term_link( $tornex_mm_child ) ); ?>" class="tornex-megapanel-cell">
-											<?php echo tornex_category_icon_html( $tornex_mm_child->term_id ); ?>
-											<span><?php echo esc_html( $tornex_mm_child->name ); ?></span>
-										</a>
+							<?php
+							$tornex_mm_has_groups = false;
+							foreach ( $tornex_mm_children as $tornex_mm_check ) {
+								if ( ! empty( $tornex_mm_check['children'] ) ) {
+									$tornex_mm_has_groups = true;
+									break;
+								}
+							}
+							?>
+							<div class="tornex-megapanel<?php echo $tornex_mm_has_groups ? ' tornex-megapanel--grouped' : ''; ?>">
+								<div class="<?php echo $tornex_mm_has_groups ? 'tornex-megapanel-groups' : 'tornex-megapanel-grid'; ?>">
+									<?php foreach ( $tornex_mm_children as $tornex_mm_child_entry ) : ?>
+										<?php
+										$tornex_mm_child         = $tornex_mm_child_entry['term'];
+										$tornex_mm_grandchildren = $tornex_mm_child_entry['children'];
+										?>
+										<?php if ( $tornex_mm_grandchildren ) : ?>
+											<div class="tornex-megapanel-group">
+												<a href="<?php echo esc_url( get_term_link( $tornex_mm_child ) ); ?>" class="tornex-megapanel-group-title">
+													<?php echo tornex_category_icon_html( $tornex_mm_child->term_id ); ?>
+													<span><?php echo esc_html( $tornex_mm_child->name ); ?></span>
+												</a>
+												<div class="tornex-megapanel-group-list">
+													<?php foreach ( $tornex_mm_grandchildren as $tornex_mm_grandchild ) : ?>
+														<a href="<?php echo esc_url( get_term_link( $tornex_mm_grandchild ) ); ?>"><?php echo esc_html( $tornex_mm_grandchild->name ); ?></a>
+													<?php endforeach; ?>
+												</div>
+											</div>
+										<?php else : ?>
+											<a href="<?php echo esc_url( get_term_link( $tornex_mm_child ) ); ?>" class="tornex-megapanel-cell">
+												<?php echo tornex_category_icon_html( $tornex_mm_child->term_id ); ?>
+												<span><?php echo esc_html( $tornex_mm_child->name ); ?></span>
+											</a>
+										<?php endif; ?>
 									<?php endforeach; ?>
 								</div>
 								<a href="<?php echo esc_url( $tornex_mm_link ); ?>" class="tornex-megapanel-viewall">مشاهده همه <?php echo esc_html( $tornex_mm_term->name ); ?> ←</a>
@@ -219,8 +246,23 @@
 						</button>
 						<div class="tornex-drawer-accordion-panel">
 							<div class="tornex-drawer-accordion-panel-inner">
-								<?php foreach ( $tornex_mm_children as $tornex_mm_child ) : ?>
-									<a href="<?php echo esc_url( get_term_link( $tornex_mm_child ) ); ?>"><?php echo esc_html( $tornex_mm_child->name ); ?></a>
+								<?php foreach ( $tornex_mm_children as $tornex_mm_child_entry ) : ?>
+									<?php
+									$tornex_mm_child         = $tornex_mm_child_entry['term'];
+									$tornex_mm_grandchildren = $tornex_mm_child_entry['children'];
+									?>
+									<?php if ( $tornex_mm_grandchildren ) : ?>
+										<div class="tornex-drawer-group">
+											<a href="<?php echo esc_url( get_term_link( $tornex_mm_child ) ); ?>" class="tornex-drawer-group-title"><?php echo esc_html( $tornex_mm_child->name ); ?></a>
+											<div class="tornex-drawer-group-list">
+												<?php foreach ( $tornex_mm_grandchildren as $tornex_mm_grandchild ) : ?>
+													<a href="<?php echo esc_url( get_term_link( $tornex_mm_grandchild ) ); ?>"><?php echo esc_html( $tornex_mm_grandchild->name ); ?></a>
+												<?php endforeach; ?>
+											</div>
+										</div>
+									<?php else : ?>
+										<a href="<?php echo esc_url( get_term_link( $tornex_mm_child ) ); ?>"><?php echo esc_html( $tornex_mm_child->name ); ?></a>
+									<?php endif; ?>
 								<?php endforeach; ?>
 								<a href="<?php echo esc_url( $tornex_mm_link ); ?>" class="tornex-drawer-viewall">مشاهده همه <?php echo esc_html( $tornex_mm_term->name ); ?> ←</a>
 							</div>

@@ -28,6 +28,9 @@ Thumbs.db
 /scripts/tornex-verify.php
 /scripts/tornex-cleanup.php
 /scripts/tornex-import.php
+/scripts/tornex-category-audit.php
+/scripts/tornex-recategorize.php
+/scripts/tornex-merge-dupes.php
 
 # Barghsan product import — scraped data, not theme source
 /data/
