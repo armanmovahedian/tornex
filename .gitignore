@@ -31,6 +31,8 @@ Thumbs.db
 /scripts/tornex-category-audit.php
 /scripts/tornex-recategorize.php
 /scripts/tornex-merge-dupes.php
+/scripts/tornex-fix-category-seo.php
+/scripts/tornex-seo-diag.php
 
 # Barghsan product import — scraped data, not theme source
 /data/
